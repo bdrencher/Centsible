@@ -2,10 +2,10 @@
   "name": "centsible",
   "version": "1.0.0",
   "description": "A personal finance application that encourages users to spend their loose change wisely",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./api/server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
