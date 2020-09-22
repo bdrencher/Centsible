@@ -1,0 +1,22 @@
+{
+  "name": "centsible",
+  "version": "1.0.0",
+  "description": "A personal finance application that encourages users to spend their loose change wisely",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdrencher/Centsible.git"
+  },
+  "author": "Ben Rencher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bdrencher/Centsible/issues"
+  },
+  "homepage": "https://github.com/bdrencher/Centsible#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
