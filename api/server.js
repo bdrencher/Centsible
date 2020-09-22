@@ -1,11 +1,13 @@
 const express = require('express');
 
-let app = express();
-
-app.listen(8080, () => {
-    console.log("Listening");
-})
+const app = express();
+const port = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
     res.sendFile('/home/ben/Projects/Centsible/client/build/index.html');
+});
+
+
+app.listen(port, () => {
+    console.log("Listening");
 });
