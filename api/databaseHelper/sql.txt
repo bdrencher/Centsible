@@ -1,0 +1,7 @@
+***** USERS TABLE *****
+CREATE TABLE users (userid SERIAL PRIMARY KEY NOT NULL, username VARCHAR(30));
+INSERT INTO users (username) VALUES ($username);
+
+***** PASSWORD HASH TABLE *****
+CREATE TABLE password_hash (userid INT REFERENCES users(userid), passhash VARCHAR(60));
+INSERT INTO password_hash VALUES ((SELECT userid FROM users WHERE username = $username), $passhash);
