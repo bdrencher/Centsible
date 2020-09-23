@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <h1>Centsible</h1>
+        <h1>Centsible</h1>
       </header>
     </div>
   );
