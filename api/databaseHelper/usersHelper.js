@@ -1,6 +1,7 @@
 module.exports = {
     createUser: createUser,
-    insertUserPasshash: insertUserPasshash
+    insertUserPasshash: insertUserPasshash,
+    getUserPasshash: getUserCredentials
 }
 
 const { Pool } = require('pg');
@@ -56,3 +57,29 @@ function insertUserPasshash(username, passhash) {
         }
     });
 }
+
+/*******************************************
+ * getUserCredentials
+ * @param username: string
+ * @param callback: function - returns
+ * passhash if the user exists, false
+ * otherwise
+ * 
+ * retrieves user's passhash and passes it
+ * on to the callback
+ ******************************************/
+
+ function getUserCredentials(username, callback) {
+    const query = {
+        text: 'SELECT passhash FROM password_hash WHERE userid = (SELECT userid FROM users WHERE username = $1)',
+        values: [username]
+    }
+    pool.query(query, (err, result) => {
+        if (err || result == null) {
+            console.log(err);
+            callback(err, false);
+        } else {
+            callback(null, result.rows[0]);
+        }
+    });
+ }
