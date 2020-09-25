@@ -7,7 +7,7 @@ module.exports =
  * This class is used to store
  * a user's username and password hash
  **************************************/
-class user {
+class User {
     username = '';
     passhash = '';
     constructor(iUsername, iPasshash) {
