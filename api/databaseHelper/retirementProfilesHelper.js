@@ -51,7 +51,7 @@ function updateRetirementData(username, profile, callback) {
         values: [profile.currentAge, profile.retirementAge, profile.retirementGoal, profile.currentAssets, username]
     };
     pool.query(query, (err, result) => {
-        if (err || result.rows[0] == null) {
+        if (err || result == null) {
             console.log(err);
             callback(err, false);
         } else {
