@@ -1,10 +1,13 @@
 const express = require('express');
 const path = require('path');
 
+const bcrypt = require('bcrypt');
+
+const users = require('./api/controller/usersController');
+const retirementProfiles = require('./api/controller/retirementProfilesController');
+
 const app = express();
 const port = process.env.PORT || 5000;
-
-const retirementProfiles = require('./api/controller/retirementProfilesController');
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use(express.urlencoded({ extended: true }));
@@ -12,6 +15,22 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
+
+/******** USERS *********/
+app.post('/createUser', (req, res) => {
+    bcrypt.hash(req.body.password, 10, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).json({Success: false});
+        } else {
+            users.createUser(req.body.username, result, res);
+        }
+    });
+});
+
+app.post('/validateCredentials', (req, res) => {
+    users.validateUserCredentials(req.body.username, req.body.password)
+})
 
 /******** RETIREMENT PROFILES *********/
 app.post('/createRetirementProfile', (req, res) => {
