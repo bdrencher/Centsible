@@ -1,5 +1,3 @@
-import { RetirementProfile } from '../model/retirementProfile.mjs';
-
 module.exports = {
     enterRetirementData: enterRetirementData,
     updateRetirementData: updateRetirementData,
