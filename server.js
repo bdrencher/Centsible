@@ -7,12 +7,15 @@ const port = process.env.PORT || 5000;
 const retirementProfiles = require('./api/controller/retirementProfilesController');
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
+/******** RETIREMENT PROFILES *********/
 app.post('/createRetirementProfile', (req, res) => {
+    console.log(req.body);
     retirementProfiles.createRetirementProfile(req.body.username, req.body.profile, res);
 });
 
