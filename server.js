@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 
 /******** RETIREMENT PROFILES *********/
 app.post('/createRetirementProfile', (req, res) => {
-    console.log(req.body);
     retirementProfiles.createRetirementProfile(req.body.username, req.body.profile, res);
 });
 

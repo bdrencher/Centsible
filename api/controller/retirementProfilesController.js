@@ -46,7 +46,7 @@ function updateRetirementProfile(username, profile, res) {
  * @param httpResponse res - sends response to client
  ****************************************************/
 function getRetirementProfile(username, res) {
-    retirementProfilesHelper.getRetirementData(username, (err, res) => {
+    retirementProfilesHelper.getRetirementData(username, (err, result) => {
         if (err) {
             res.status(500).json({ Success: false });
         } else {
