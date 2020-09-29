@@ -1,6 +1,7 @@
 module.exports = {
     createUser: createUser,
-    validateUserCredentials: validateUserCredentials
+    validateUserCredentials: validateUserCredentials,
+    deleteUser: deleteUser
 }
 
 const usersHelper = require('../databaseHelper/usersHelper');
@@ -46,6 +47,22 @@ function validateUserCredentials(username, password, res) {
                     res.status(200).json({Success: true, validCredentials: false});
                 }
             });
+        }
+    });
+}
+
+/**************************************************
+ * @desc Deletes a user and their retirement data
+ * @param username string
+ * @param httpResponse res
+ *************************************************/
+function deleteUser(username, res) {
+    usersHelper.deleteUser(username, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).json({ Success: result });
+        } else {
+            res.status(200).json({ Success: result });
         }
     });
 }

@@ -1,7 +1,8 @@
 module.exports = {
     createUser: createUser,
     insertUserPasshash: insertUserPasshash,
-    getUserPasshash: getUserCredentials
+    getUserPasshash: getUserCredentials,
+    deleteUser: deleteUser
 }
 
 const { Pool } = require('pg');
@@ -80,6 +81,64 @@ function insertUserPasshash(username, passhash) {
             callback(err, false);
         } else {
             callback(null, result.rows[0]);
+        }
+    });
+ }
+
+ /*****************************************
+  * @desc deletes a user from the database
+  * @param username string
+  * @param callback function
+  ****************************************/
+ function deleteUser(username, callback) {
+    deleteRetirementData(username);
+    deletePasshashData(username);
+    const query = {
+        text: 'DELETE FROM users WHERE userid = (SELECT userid FROM users WHERE username = $1)',
+        values: [username]
+    };
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.log(err);
+            callback(err, false);
+        } else {
+            callback(null, true);
+        }
+    });
+ }
+
+ /*****************************************
+  * @desc deletes retirement data
+  * @param username string
+  ****************************************/
+ function deleteRetirementData(username) {
+    const query = {
+        text: 'DELETE FROM retirement_information WHERE userid = (SELECT userid FROM users WHERE username = $1)',
+        values: [username]
+    };
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("retirement data deleted successfully");
+        }
+    });
+ }
+
+ /*******************************************
+  * @desc deletes passhash data
+  * @param username string
+  ******************************************/
+ function deletePasshashData(username) {
+    const query = {
+        text: 'DELETE FROM password_hash WHERE userid = (SELECT userid FROM users WHERE username = $1)',
+        values: [username]
+    };
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("passhash data deleted successfully");
         }
     });
  }
