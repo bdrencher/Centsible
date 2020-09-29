@@ -32,7 +32,8 @@ function createUser(user, callback) {
             console.log(err);
             callback(err, false);
         } else {
-            insertUserPasshash(user.username, user.passhash)
+            insertUserPasshash(user.username, user.passhash);
+            callback(null, true);
         }
     });
 }
