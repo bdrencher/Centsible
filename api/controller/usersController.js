@@ -17,7 +17,7 @@ const User = require ('../model/user');
 function createUser(username, passhash, res) {
     let newUser = new User(username, passhash);
     usersHelper.createUser(newUser, (err, result) => {
-        if(err) {
+        if (err) {
             res.status(500).json({Success: false});
         } else {
             res.status(200).json({Success: true});

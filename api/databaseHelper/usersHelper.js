@@ -2,7 +2,7 @@ module.exports = {
     createUser: createUser,
     insertUserPasshash: insertUserPasshash,
     getUserPasshash: getUserCredentials,
-    deleteUser: deleteUser
+    deleteUser: deletePasshashData
 }
 
 const { Pool } = require('pg');
@@ -92,9 +92,7 @@ function insertUserPasshash(username, passhash) {
   * @param username string
   * @param callback function
   ****************************************/
- function deleteUser(username, callback) {
-    deleteRetirementData(username);
-    deletePasshashData(username);
+ function deleteUser(username) {
     const query = {
         text: 'DELETE FROM users WHERE userid = (SELECT userid FROM users WHERE username = $1)',
         values: [username]
@@ -102,9 +100,6 @@ function insertUserPasshash(username, passhash) {
     pool.query(query, (err, result) => {
         if (err) {
             console.log(err);
-            callback(err, false);
-        } else {
-            callback(null, true);
         }
     });
  }
@@ -113,7 +108,7 @@ function insertUserPasshash(username, passhash) {
   * @desc deletes retirement data
   * @param username string
   ****************************************/
- function deleteRetirementData(username) {
+ function deleteRetirementData(username, callback) {
     const query = {
         text: 'DELETE FROM retirement_information WHERE userid = (SELECT userid FROM users WHERE username = $1)',
         values: [username]
@@ -121,8 +116,10 @@ function insertUserPasshash(username, passhash) {
     pool.query(query, (err, result) => {
         if (err) {
             console.log(err);
+            callback(err, false);
         } else {
             console.log("retirement data deleted successfully");
+            callback(null, true);
         }
     });
  }
@@ -131,7 +128,7 @@ function insertUserPasshash(username, passhash) {
   * @desc deletes passhash data
   * @param username string
   ******************************************/
- function deletePasshashData(username) {
+ function deletePasshashData(username, callback) {
     const query = {
         text: 'DELETE FROM password_hash WHERE userid = (SELECT userid FROM users WHERE username = $1)',
         values: [username]
@@ -139,8 +136,16 @@ function insertUserPasshash(username, passhash) {
     pool.query(query, (err, result) => {
         if (err) {
             console.log(err);
+            callback(err, false);
         } else {
-            console.log("passhash data deleted successfully");
+            deleteRetirementData(username, (err, result) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    deleteUser(username);
+                }
+            });
+            callback(null, true);
         }
     });
  }
