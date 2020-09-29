@@ -22,7 +22,6 @@ const pool = new Pool({
  *******************************************/
 
 function createUser(user, callback) {
-    console.log(user);
     const query = {
         text: 'INSERT INTO users (username) VALUES ($1)',
         values: [user.username]
@@ -118,7 +117,6 @@ function insertUserPasshash(username, passhash) {
             console.log(err);
             callback(err, false);
         } else {
-            console.log("retirement data deleted successfully");
             callback(null, true);
         }
     });
