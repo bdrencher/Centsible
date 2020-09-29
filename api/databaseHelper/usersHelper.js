@@ -22,6 +22,7 @@ const pool = new Pool({
  *******************************************/
 
 function createUser(user, callback) {
+    console.log(user);
     const query = {
         text: 'INSERT INTO users (username) VALUES ($1)',
         values: [user.username]

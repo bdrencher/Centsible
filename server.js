@@ -23,7 +23,6 @@ app.post('/createUser', (req, res) => {
             console.log(err);
             res.status(500).json({Success: false});
         } else {
-            console.log(result);
             users.createUser(req.body.username, result, res);
         }
     });
