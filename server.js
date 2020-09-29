@@ -29,7 +29,11 @@ app.post('/createUser', (req, res) => {
 });
 
 app.post('/validateCredentials', (req, res) => {
-    users.validateUserCredentials(req.body.username, req.body.password)
+    users.validateUserCredentials(req.body.username, req.body.password, res)
+});
+
+app.delete('/deleteUser', (req, res) => {
+    users.deleteUser(req.body.username, res);
 })
 
 /******** RETIREMENT PROFILES *********/
