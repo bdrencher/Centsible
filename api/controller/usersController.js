@@ -33,12 +33,11 @@ function createUser(username, passhash, res) {
  ***************************************************/
 function validateUserCredentials(username, password, res) {
     usersHelper.getUserPasshash(username, (err, result) => {
-        console.log(result);
         if (err) {
             console.log(err);
             res.status(500).json({Success: false, validCredentials: false});
         } else {
-            bcrypt.compare(password, result, (err, isValid) => {
+            bcrypt.compare(password, result.passhash, (err, isValid) => {
                 if (err) {
                     console.log(err);
                     res.status(500).json({Success: false, validCredentials: false});
