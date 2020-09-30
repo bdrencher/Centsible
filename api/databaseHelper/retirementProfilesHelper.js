@@ -20,6 +20,7 @@ const pool = new Pool({
  ********************************************/
 
 function enterRetirementData(username, profile, callback) {
+    console.log(profile);
     const query = {
         text: 'INSERT INTO retirement_information VALUES ((SELECT userid FROM users WHERE username = $1), $2, $3, $4, $5)',
         values: [username, profile.currentAge, profile.retirementAge, profile.retirementGoal, profile.currentAssets]
