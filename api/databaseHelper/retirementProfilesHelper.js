@@ -73,7 +73,7 @@ function updateRetirementData(username, profile, callback) {
 
 function getRetirementData(username, callback) {
     const query = {
-        text: 'SELECT (current_age, retirement_age, retirement_goal, current_assets) FROM retirement_information WHERE userid = (SELECT userid FROM users WHERE username = $1)',
+        text: 'SELECT current_age, retirement_age, retirement_goal, current_assets FROM retirement_information WHERE userid = (SELECT userid FROM users WHERE username = $1)',
         values: [username]
     };
     pool.query(query, (err, result) => {
