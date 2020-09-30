@@ -39,9 +39,6 @@ app.delete('/deleteUser', (req, res) => {
 
 /******** RETIREMENT PROFILES *********/
 app.post('/createRetirementProfile', (req, res) => {
-    console.log(req.body);
-    console.log(req.body.username);
-    console.log(req.body.profile);
     retirementProfiles.createRetirementProfile(req.body.username, req.body.profile, res);
 });
 

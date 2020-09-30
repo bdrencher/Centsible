@@ -50,6 +50,7 @@ function getRetirementProfile(username, res) {
         if (err) {
             res.status(500).json({ Success: false });
         } else {
+            console.log(result);
             let profile = new RetirementProfile(result.current_age, result.retirement_age, result.current_assets, result.retirement_goal);
             res.status(200).json({ Success: true, profile: profile });
         }
