@@ -36,11 +36,51 @@ module.exports = {
  * @boolean accountForInflation - true will
  * decrease ROI by 3%
  ****************************************/
-function compoundInterestCalculator(principle, returnOnInvestment, timeInYears, accountForInflation) {
+function calculateInvestment(principle, returnOnInvestment, timeInYears, accountForInflation) {
     if (accountForInflation) {
-        return Math.floor(principle * (1 + returnOnInvestment - 0.03)**(timeInYears)); // compounds yearly, accounts for inflation
+        return Math.round(principle * (1 + returnOnInvestment - 0.03)**(timeInYears)); // compounds yearly, accounts for inflation
     } else {
-        return Math.floor(principle * (1 + returnOnInvestment)**(timeInYears)); // compounded yearly, doesn't account for inflation
+        return Math.round(principle * (1 + returnOnInvestment)**(timeInYears)); // compounded yearly, doesn't account for inflation
+    }
+}
+
+/****************************************
+ * @desc tests that the output is correct
+ * for a given fund name, principle, and
+ * expected output.
+ * @number fundSelection - 0 for SnP500,
+ * 1 for Russel1000, and 2 for NASDAQ
+ * @number principle - the initial investment
+ * @boolean withInflation - true to test
+ * with accounting for inflation
+ ***************************************/
+function testIndexFundResult(fundSelection, principle, withInflation, investmentDuration, expectedOutput) {
+    let interestRate = 0;
+    let fundName = "";
+    switch(fundSelection) {
+        case 0:
+            interestRate = 0.1;
+            fundName = "S&P500";
+            break;
+        case 1:
+            interestRate = 0.12;
+            fundName = "Russel 1000";
+            break;
+        case 2:
+            interestRate = 0.14;
+            fundName = "NASDAQ";
+            break;
+        default:
+            break;
+    }
+
+    let result = calculateInvestment(principle, interestRate, investmentDuration, withInflation);
+    if (result == expectedOutput) {
+        console.log(fundName + " test passed. Principle: " + principle + ". Years: " + investmentDuration + ". Expected output: " + expectedOutput);
+        return true;
+    } else {
+        console.log(fundName + " test failed. Principle: " + principle + ". Years: " + investmentDuration + ". Expected output: " + expectedOutput + ". Actual output: " + result);
+        return false;
     }
 }
 
@@ -54,68 +94,20 @@ function testSnP500() {
     const answer20Inflation  = 420;
     const answer100Inflation = 2100;
     const answer500Inflation = 10501;
-    const result1Inflation   = compoundInterestCalculator(principle1, 0.1, 45, true);
-    const result20Inflation  = compoundInterestCalculator(principle20, 0.1, 45, true);
-    const result100Inflation = compoundInterestCalculator(principle100, 0.1, 45, true);
-    const result500Inflation = compoundInterestCalculator(principle500, 0.1, 45, true);
+    testIndexFundResult(0, principle1, true, 45, answer1Inflation);
+    testIndexFundResult(0, principle20, true, 45, answer20Inflation);
+    testIndexFundResult(0, principle100, true, 45, answer100Inflation);
+    testIndexFundResult(0, principle500, true, 45, answer500Inflation);
     // not accounting for inflation
-    const answer1   = 72;
-    const answer20  = 1457;
+    const answer1   = 73;
+    const answer20  = 1458;
     const answer100 = 7289;
     const answer500 = 36445;
-    const result1   = compoundInterestCalculator(principle1, 0.1, 45, false);
-    const result20  = compoundInterestCalculator(principle20, 0.1, 45, false);
-    const result100 = compoundInterestCalculator(principle100, 0.1, 45, false);
-    const result500 = compoundInterestCalculator(principle500, 0.1, 45, false);
+    testIndexFundResult(0, principle1, false, 45, answer1);
+    testIndexFundResult(0, principle20, false, 45, answer20);
+    testIndexFundResult(0, principle100, false, 45, answer100);
+    testIndexFundResult(0, principle500, false, 45, answer500);
 
-    if (answer1Inflation == result1Inflation) {
-        console.log("S&P500 inflation test 1 passed!");
-    } else {
-        console.log("S&P500 inflation test 1 failed!", result1Inflation);
-    }
-
-    if (answer20Inflation == result20Inflation) {
-        console.log("S&P500 inflation test 2 passed!");
-    } else {
-        console.log("S&P500 inflation test 2 failed!", result20Inflation);
-    }
-
-    if (answer100Inflation == result100Inflation) {
-        console.log("S&P500 inflation test 3 passed!");
-    } else {
-        console.log("S&P500 inflation test 3 failed!", result100Inflation);
-    }
-
-    if (answer500Inflation == result500Inflation) {
-        console.log("S&P500 inflation test 4 passed!");
-    } else {
-        console.log("S&P500 inflation test 4 failed!", result500Inflation);
-    }
-
-
-    if (answer1 == result1) {
-        console.log("S&P500 test 1 passed!");
-    } else {
-        console.log("S&P500 test 1 failed!", result1);
-    }
-
-    if (answer20 == result20) {
-        console.log("S&P500 test 2 passed!");
-    } else {
-        console.log("S&P500 test 2 failed!", result20);
-    }
-
-    if (answer100 == result100) {
-        console.log("S&P500 test 3 passed!");
-    } else {
-        console.log("S&P500 test 3 failed!", result100);
-    }
-
-    if (answer500 == result500) {
-        console.log("S&P500 test 4 passed!");
-    } else {
-        console.log("S&P500 test 4 failed!", result500);
-    }
 }
 
 function testNASDAQ() {
@@ -124,72 +116,23 @@ function testNASDAQ() {
     const principle100 = 100;
     const principle500 = 500;
     // accounting for inflation
-    const answer1Inflation   = 109;
-    const answer20Inflation  = 2190;
+    const answer1Inflation   = 110;
+    const answer20Inflation  = 2191;
     const answer100Inflation = 10953;
     const answer500Inflation = 54765;
-    const result1Inflation   = compoundInterestCalculator(principle1, 0.14, 45, true);
-    const result20Inflation  = compoundInterestCalculator(principle20, 0.14, 45, true);
-    const result100Inflation = compoundInterestCalculator(principle100, 0.14, 45, true);
-    const result500Inflation = compoundInterestCalculator(principle500, 0.14, 45, true);
+    testIndexFundResult(2, principle1, true, 45, answer1Inflation);
+    testIndexFundResult(2, principle20, true, 45, answer20Inflation);
+    testIndexFundResult(2, principle100, true, 45, answer100Inflation);
+    testIndexFundResult(2, principle500, true, 45, answer500Inflation);
     // not accounting for inflation
-    const answer1   = 363;
-    const answer20  = 7273;
-    const answer100 = 36367;
-    const answer500 = 181839;
-    const result1   = compoundInterestCalculator(principle1, 0.14, 45, false);
-    const result20  = compoundInterestCalculator(principle20, 0.14, 45, false);
-    const result100 = compoundInterestCalculator(principle100, 0.14, 45, false);
-    const result500 = compoundInterestCalculator(principle500, 0.14, 45, false);
-
-    if (answer1Inflation == result1Inflation) {
-        console.log("NASDAQ inflation test 1 passed!");
-    } else {
-        console.log("NASDAQ inflation test 1 failed!", result1Inflation);
-    }
-
-    if (answer20Inflation == result20Inflation) {
-        console.log("NASDAQ inflation test 2 passed!");
-    } else {
-        console.log("NASDAQ inflation test 2 failed!", result20Inflation);
-    }
-
-    if (answer100Inflation == result100Inflation) {
-        console.log("NASDAQ inflation test 3 passed!");
-    } else {
-        console.log("NASDAQ inflation test 3 failed!", result100Inflation);
-    }
-
-    if (answer500Inflation == result500Inflation) {
-        console.log("NASDAQ inflation test 4 passed!");
-    } else {
-        console.log("NASDAQ inflation test 4 failed!", result500Inflation);
-    }
-
-
-    if (answer1 == result1) {
-        console.log("NASDAQ test 1 passed!");
-    } else {
-        console.log("NASDAQ test 1 failed!", result1);
-    }
-
-    if (answer20 == result20) {
-        console.log("NASDAQ test 2 passed!");
-    } else {
-        console.log("NASDAQ test 2 failed!", result20);
-    }
-
-    if (answer100 == result100) {
-        console.log("NASDAQ test 3 passed!");
-    } else {
-        console.log("NASDAQ test 3 failed!", result100);
-    }
-
-    if (answer500 == result500) {
-        console.log("NASDAQ test 4 passed!");
-    } else {
-        console.log("NASDAQ test 4 failed!", result500);
-    }
+    const answer1   = 364;
+    const answer20  = 7274;
+    const answer100 = 36368;
+    const answer500 = 181840;
+    testIndexFundResult(2, principle1, false, 45, answer1);
+    testIndexFundResult(2, principle20, false, 45, answer20);
+    testIndexFundResult(2, principle100, false, 45, answer100);
+    testIndexFundResult(2, principle500, false, 45, answer500);
 }
 
 function testRussel1000() {
@@ -199,73 +142,27 @@ function testRussel1000() {
     const principle500 = 500;
     // accounting for inflation
     const answer1Inflation   = 48;
-    const answer20Inflation  = 966;
-    const answer100Inflation = 4832;
-    const answer500Inflation = 24163;
-    const result1Inflation   = compoundInterestCalculator(principle1, 0.12, 45, true);
-    const result20Inflation  = compoundInterestCalculator(principle20, 0.12, 45, true);
-    const result100Inflation = compoundInterestCalculator(principle100, 0.12, 45, true);
-    const result500Inflation = compoundInterestCalculator(principle500, 0.12, 45, true);
+    const answer20Inflation  = 967;
+    const answer100Inflation = 4833;
+    const answer500Inflation = 24164;
+    testIndexFundResult(1, principle1, true, 45, answer1Inflation);
+    testIndexFundResult(1, principle20, true, 45, answer20Inflation);
+    testIndexFundResult(1, principle100, true, 45, answer100Inflation);
+    testIndexFundResult(1, principle500, true, 45, answer500Inflation);
     // not accounting for inflation
-    const answer1   = 163;
-    const answer20  = 3279;
-    const answer100 = 16398;
-    const answer500 = 81993;
-    const result1   = compoundInterestCalculator(principle1, 0.12, 45, false);
-    const result20  = compoundInterestCalculator(principle20, 0.12, 45, false);
-    const result100 = compoundInterestCalculator(principle100, 0.12, 45, false);
-    const result500 = compoundInterestCalculator(principle500, 0.12, 45, false);
-
-    if (answer1Inflation == result1Inflation) {
-        console.log("Russel1000 inflation test 1 passed!");
-    } else {
-        console.log("Russel1000 inflation test 1 failed!", result1Inflation);
-    }
-
-    if (answer20Inflation == result20Inflation) {
-        console.log("Russel1000 inflation test 2 passed!");
-    } else {
-        console.log("Russel1000 inflation test 2 failed!", result20Inflation);
-    }
-
-    if (answer100Inflation == result100Inflation) {
-        console.log("Russel1000 inflation test 3 passed!");
-    } else {
-        console.log("Russel1000 inflation test 3 failed!", result100Inflation);
-    }
-
-    if (answer500Inflation == result500Inflation) {
-        console.log("Russel1000 inflation test 4 passed!");
-    } else {
-        console.log("Russel1000 inflation test 4 failed!", result500Inflation);
-    }
-
-
-    if (answer1 == result1) {
-        console.log("Russel1000 test 1 passed!");
-    } else {
-        console.log("Russel1000 test 1 failed!", result1);
-    }
-
-    if (answer20 == result20) {
-        console.log("Russel1000 test 2 passed!");
-    } else {
-        console.log("Russel1000 test 2 failed!", result20);
-    }
-
-    if (answer100 == result100) {
-        console.log("Russel1000 test 3 passed!");
-    } else {
-        console.log("Russel1000 test 3 failed!", result100);
-    }
-
-    if (answer500 == result500) {
-        console.log("Russel1000 test 4 passed!");
-    } else {
-        console.log("Russel1000 test 4 failed!", result500);
-    }
+    const answer1   = 164;
+    const answer20  = 3280;
+    const answer100 = 16399;
+    const answer500 = 81994;
+    testIndexFundResult(1, principle1, false, 45, answer1);
+    testIndexFundResult(1, principle20, false, 45, answer20);
+    testIndexFundResult(1, principle100, false, 45, answer100);
+    testIndexFundResult(1, principle500, false, 45, answer500);
 }
 
 testSnP500();
 testNASDAQ();
 testRussel1000();
+testIndexFundResult(0, 50, false, 32, 1056);
+testIndexFundResult(1, 42, true, 23, 305);
+testIndexFundResult(2, 289347, false, 50, 202610315);
