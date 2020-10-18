@@ -73,3 +73,5 @@ class FinanceEstimator extends React.Component {
     )
   }
 }
+
+export default FinanceEstimator;
