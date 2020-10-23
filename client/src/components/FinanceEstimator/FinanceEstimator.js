@@ -10,7 +10,7 @@ export class FinanceEstimator extends React.Component {
       futureDollars: 0,
       years: 0,
       fund: -1,
-      inflation: null
+      inflation: true
     };
 
     this.handleChange = this.handleChange.bind(this);
