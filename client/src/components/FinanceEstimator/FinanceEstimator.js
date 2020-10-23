@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './FinanceEstimator.module.css';
 import calculationHelper from '../../../controller/calculationHelper';
 
-class FinanceEstimator extends React.Component {
+export class FinanceEstimator extends React.Component {
   constructor() {
     this.state = {
       currentDollars: 0,
@@ -73,5 +73,3 @@ class FinanceEstimator extends React.Component {
     )
   }
 }
-
-export default FinanceEstimator;

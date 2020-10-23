@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import FinanceEstimator from './components/FinanceEstimator';
+import { FinanceEstimator } from './components/FinanceEstimator';
 
 function App() {
   return (
