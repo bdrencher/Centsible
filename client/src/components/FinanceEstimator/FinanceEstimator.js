@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FinanceEstimator.module.css';
-import calculationHelper from '../../../controller/calculationHelper';
+import calculationHelper from '../../services/calculationHelper';
 
 export class FinanceEstimator extends React.Component {
   constructor() {
