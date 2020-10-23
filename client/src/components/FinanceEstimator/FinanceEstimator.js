@@ -10,7 +10,7 @@ export class FinanceEstimator extends React.Component {
       futureDollars: 0,
       years: 0,
       fund: -1,
-      inflation: true
+      inflation: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -18,11 +18,11 @@ export class FinanceEstimator extends React.Component {
   }
 
   handleChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
     this.setState({
-      currentDollars: event.target.currentDollars,
-      years: event.target.years,
-      fund: event.target.fund,
-      inflation: event.target.inflation
+      [name]: value;
     });
   }
 
@@ -43,15 +43,15 @@ export class FinanceEstimator extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <label>
               Value in today's dollars:
-              <input type="number" value={this.state.currentDollars} onChange={this.handleChange}></input>
+              <input type="number" name="currentDollars" value={this.state.currentDollars} onChange={this.handleChange}></input>
             </label>
             <label>
               Years to maturity:
-              <input type="number" value={this.state.years} onChange={this.handleChange}></input>
+              <input type="number" name="years" value={this.state.years} onChange={this.handleChange}></input>
             </label>
             <label>
               Index fund:
-              <select value={this.state.fund} onChange={this.handleChange}>
+              <select name="fund" value={this.state.fund} onChange={this.handleChange}>
                 <option value="0">S&P500</option>
                 <option value="1">NASDAQ</option>
                 <option value="2">Russell 1000</option>
@@ -59,7 +59,7 @@ export class FinanceEstimator extends React.Component {
             </label>
             <label>
               Account for inflation?
-              <input name="inflationBox" type="checkbox" checked={this.state.inflation} onChange={this.handleChange}></input>
+              <input name="inflation" type="checkbox" value={this.state.inflation} onChange={this.handleChange}></input>
             </label>
             <input type="submit" value="Submit"></input>
           </form>
