@@ -25,12 +25,13 @@ export class FinanceEstimator extends React.Component {
   }
 
   handleSubmit = (event) => {
-    this.state.futureDollars = calculationHelper.calculateInvestment(
+    this.futureDollars = calculationHelper.calculateInvestment(
                                                  this.state.currentDollars,
                                                  this.state.fund,
                                                  this.state.years,
                                                  this.state.inflation
                                                  );
+    console.log(this.state.currentDollars, this.state.years, this.state.fund, this.state.inflation, this.state.futureDollars);
     event.preventDefault();
   }
 
