@@ -10,7 +10,7 @@ export class FinanceEstimator extends React.Component {
       currentDollars: 0,
       futureDollars: 0,
       years: 0,
-      fund: -1,
+      fund: 0,
       inflation: false
     };
   }
@@ -25,13 +25,12 @@ export class FinanceEstimator extends React.Component {
   }
 
   handleSubmit = (event) => {
-    this.futureDollars = calculationHelper.calculateInvestment(
+    this.setState({futureDollars: calculationHelper.calculateInvestment(
                                                  this.state.currentDollars,
                                                  this.state.fund,
                                                  this.state.years,
                                                  this.state.inflation
-                                                 );
-    console.log(this.state.currentDollars, this.state.years, this.state.fund, this.state.inflation, this.state.futureDollars);
+                                                 )});
     event.preventDefault();
   }
 
