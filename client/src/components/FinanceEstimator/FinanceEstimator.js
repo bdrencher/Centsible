@@ -4,12 +4,6 @@ import styles from './FinanceEstimator.module.css';
 import calculationHelper from '../../services/calculationHelper';
 
 export class FinanceEstimator extends React.Component {
-  currentDollars;
-  futureDollars;
-  years;
-  fund;
-  inflation;
-
   constructor(props) {
     super(props);
     this.state = {
