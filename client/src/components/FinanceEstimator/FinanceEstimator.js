@@ -10,7 +10,7 @@ export class FinanceEstimator extends React.Component {
       futureDollars: 0,
       years: 0,
       fund: -1,
-      // inflation: false
+      inflation: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -59,7 +59,7 @@ export class FinanceEstimator extends React.Component {
             </label>
             <label>
               Account for inflation?
-              {/* <input name="inflation" type="checkbox" value={this.state.inflation} onChange={this.handleChange}></input> */}
+              <input name="inflation" type="checkbox" value={this.state.inflation} onChange={this.handleChange}></input>
             </label>
             <input type="submit" value="Submit"></input>
           </form>
