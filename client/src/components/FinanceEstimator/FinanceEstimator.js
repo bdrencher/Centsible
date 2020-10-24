@@ -12,12 +12,9 @@ export class FinanceEstimator extends React.Component {
       fund: -1,
       inflation: false
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
@@ -26,7 +23,7 @@ export class FinanceEstimator extends React.Component {
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     this.state.futureDollars = calculationHelper.calculateInvestment(
                                                  this.state.currentDollars,
                                                  this.state.fund,
