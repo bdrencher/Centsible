@@ -37,18 +37,19 @@ module.exports = {
  * decrease ROI by 3%
  ****************************************/
 function calculateInvestment(principle, fund, timeInYears, accountForInflation) {
-    let returnOnInvestment = 0;
-    switch (fund) {
-        case 0:
-            returnOnInvestment = 0.10;
-            break;
-        case 1:
-            returnOnInvestment = 0.14;
-            break;
-        case 2:
-            returnOnInvestment = 0.12;
-            break;
+    let returnOnInvestment = -1;
+    if (Number(fund) === 0) {
+        returnOnInvestment = 0.10;
+    } else if (Number(fund) === 1) {
+        returnOnInvestment = 0.14;
+    } else if (Number(fund) === 2) {
+        returnOnInvestment = 0.12;
     }
+
+    if (returnOnInvestment === -1) {
+        return -1;
+    }
+
     if (accountForInflation) {
         return Math.round(principle * (1 + returnOnInvestment - 0.03)**(timeInYears)); // compounds yearly, accounts for inflation
     } else {
@@ -67,19 +68,15 @@ function calculateInvestment(principle, fund, timeInYears, accountForInflation) 
  * with accounting for inflation
  ***************************************/
 function testIndexFundResult(fundSelection, principle, withInflation, investmentDuration, expectedOutput) {
-    let interestRate = 0;
     let fundName = "";
     switch(fundSelection) {
         case 0:
-            interestRate = 0.1;
             fundName = "S&P500";
             break;
         case 2:
-            interestRate = 0.12;
             fundName = "Russel 1000";
             break;
         case 1:
-            interestRate = 0.14;
             fundName = "NASDAQ";
             break;
         default:
@@ -87,7 +84,7 @@ function testIndexFundResult(fundSelection, principle, withInflation, investment
     }
 
     let result = calculateInvestment(principle, fundSelection, investmentDuration, withInflation);
-    if (result == expectedOutput) {
+    if (result === expectedOutput) {
         console.log(fundName + " test passed. Principle: " + principle + ". Years: " + investmentDuration + ". Expected output: " + expectedOutput);
         return true;
     } else {
