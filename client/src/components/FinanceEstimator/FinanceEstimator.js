@@ -11,6 +11,7 @@ export class FinanceEstimator extends React.Component {
   inflation;
 
   constructor(props) {
+    super(props);
     this.state = {
       currentDollars: 0,
       futureDollars: 0,
