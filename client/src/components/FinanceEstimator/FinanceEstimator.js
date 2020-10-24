@@ -4,7 +4,7 @@ import styles from './FinanceEstimator.module.css';
 import calculationHelper from '../../services/calculationHelper';
 
 export class FinanceEstimator extends React.Component {
-  constructor() {
+  constructor(props) {
     this.state = {
       currentDollars: 0,
       futureDollars: 0,
