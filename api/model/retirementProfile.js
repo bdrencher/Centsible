@@ -1,7 +1,7 @@
 module.exports = 
 /*********************************
  * RetirementProfile: class
- * @param iCurrentAge: int
+ * @param iBirthyear: int
  * @param iRetirementAge: int
  * @param iCurrentAssets: Number
  * @param iRetirementGoal: Number
@@ -10,13 +10,13 @@ module.exports =
  * data
  ********************************/
 class RetirementProfile {
-    currentAge = 0;
+    birthyear = 0;
     retirementAge = 0;
     currentAssets = 0;
     retirementGoal = 0;
     
-    constructor(iCurrentAge, iRetirementAge, iCurrentAssets, iRetirementGoal) {
-        this.currentAge = iCurrentAge;
+    constructor(iBirthyear, iRetirementAge, iCurrentAssets, iRetirementGoal) {
+        this.birthyear = iBirthyear;
         this.retirementAge = iRetirementAge;
         this.currentAssets = iCurrentAssets;
         this.retirementGoal = iRetirementGoal;
