@@ -8,11 +8,11 @@ module.exports = {
  * subtracting current year by the birthday
  * year
  * 
- * @date birthday of the user
+ * @number birth year of the user
  ***************************/
-function calculateAge(birthday) {
+function calculateAge(birthyear) {
     const currentTime = Date.now();
-    return currentTime.getFullYear() - birthday.getFullYear;
+    return currentTime.getFullYear() - birthyear;
 }
 
 /****************************
@@ -23,7 +23,7 @@ function calculateAge(birthday) {
  * user expects to be when they retire
  * @date birthday is the user's birthday
  ***************************/
-function calculateYearsToRetirement(retirementAge, birthday) {
-    const userAge = calculateAge(birthday);
+function calculateYearsToRetirement(retirementAge, birthyear) {
+    const userAge = calculateAge(birthyear);
     return retirementAge - userAge;
 }
