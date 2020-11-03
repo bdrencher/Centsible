@@ -7,7 +7,7 @@ CREATE TABLE password_hash (userid INT REFERENCES users(userid) UNIQUE NOT NULL,
 INSERT INTO password_hash VALUES ((SELECT userid FROM users WHERE username = $username), $passhash);
 
 ***** RETIREMENT GOAL DATA TABLE *****
-CREATE TABLE retirement_information (userid INT REFERENCES users(userid) UNIQUE NOT NULL, current_age INT NOT NULL, retirement_age INT NOT NULL, retirement_goal NUMERIC NOT NULL, current_assets NUMERIC NOT NULL);
-INSERT INTO retirement_information VALUES ((SELECT userid FROM users WHERE username = $username), $current_age, $retirement_age, $retirement_goal, $current_assets);
-UPDATE retirement_information SET current_age = $current_age, retirement_age = $retirement_age, retirement_goal = $retirement_goal, current_assets = $current_assets WHERE userid = (SELECT userid FROM users WHERE username = $username);
-SELECT (current_age, retirement_age, retirement_goal, current_assets) FROM retirement_information WHERE userid = (SELECT userid FROM users WHERE uesrname = $username);
+CREATE TABLE retirement_information (userid INT REFERENCES users(userid) UNIQUE NOT NULL, birthyear DATE NOT NULL, retirement_age INT NOT NULL, retirement_goal NUMERIC NOT NULL, current_assets NUMERIC NOT NULL);
+INSERT INTO retirement_information VALUES ((SELECT userid FROM users WHERE username = $username), $birthyear, $retirement_age, $retirement_goal, $current_assets);
+UPDATE retirement_information SET birthyear = $birthyear, retirement_age = $retirement_age, retirement_goal = $retirement_goal, current_assets = $current_assets WHERE userid = (SELECT userid FROM users WHERE username = $username);
+SELECT (birthyear, retirement_age, retirement_goal, current_assets) FROM retirement_information WHERE userid = (SELECT userid FROM users WHERE uesrname = $username);
