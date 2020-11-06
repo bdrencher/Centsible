@@ -35,8 +35,7 @@ export class goalSetter extends React.Component {
       <div className="goalSetter">
         <h3>Goals</h3>
         <p>
-          Please provide the following information about yourself and your
-          financial goals.
+          Please enter the following information about set your new financial goal.
         </p>
         <form onSubmit={this.handleSubmit}>
           <label>
