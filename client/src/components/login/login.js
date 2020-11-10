@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import PropTypes from 'prop-types';
 import styles from './login.module.css';
 
@@ -24,14 +25,27 @@ export class Login extends React.Component {
 
   }
 
+  handleClick() {
+    const history = useHistory();
+    history.push("/dashboard");
+  }
+
   render () {
     return (
       <div className="content">
-        <div className="login">
-          <div className="header">
-            <h1>Centsible</h1>
-          </div>
-          
+        <div className="header">
+          <h1>Centsible</h1>
+        </div>
+        <div>
+          <form>
+            <label>Username
+              <input type="text"></input>
+            </label>
+            <label>Password
+              <input type="password"></input>
+            </label>
+            <button onclick={handleClick}>Login</button>
+          </form>
         </div>
       </div>
     )
