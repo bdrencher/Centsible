@@ -25,7 +25,7 @@ export class Login extends React.Component {
 
   }
 
-  handleClick() {
+  handleClick = () => {
     const history = useHistory();
     history.push("/dashboard");
   }
