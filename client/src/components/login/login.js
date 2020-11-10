@@ -44,7 +44,7 @@ export class Login extends React.Component {
             <label>Password
               <input type="password"></input>
             </label>
-            <button onClick={handleClick}>Login</button>
+            <button onClick={this.handleClick}>Login</button>
           </form>
         </div>
       </div>
