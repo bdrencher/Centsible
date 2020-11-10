@@ -26,8 +26,7 @@ export class Login extends React.Component {
   }
 
   handleClick = () => {
-    const history = useHistory();
-    history.push("/dashboard");
+    this.props.history.push("/dashboard");
   }
 
   render () {
