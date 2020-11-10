@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './goalSetter.module.css';
 
-export class goalSetter extends React.Component {
+export class GoalSetter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

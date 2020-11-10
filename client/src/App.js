@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import { FinanceEstimator } from './components/FinanceEstimator/FinanceEstimator';
-import { GoalSetter } from './components/goalSetter';
-import { Login } from './components/login';
-import { Dashboard } from './components/dashboard';
+import { GoalSetter } from './components/goalSetter/goalSetter';
+import { Login } from './components/login/login';
+import { Dashboard } from './components/dashboard/dashboard';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {

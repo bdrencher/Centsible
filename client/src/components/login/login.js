@@ -24,12 +24,15 @@ export class Login extends React.Component {
 
   }
 
-  }
-
   render () {
     return (
-      <div className="login">
-
+      <div className="content">
+        <div className="login">
+          <div className="header">
+            <h1>Centsible</h1>
+          </div>
+          
+        </div>
       </div>
     )
   }
