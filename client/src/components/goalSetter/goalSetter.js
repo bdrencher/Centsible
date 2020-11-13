@@ -18,6 +18,7 @@ export class GoalSetter extends React.Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
+    console.log(name, value);
     this.setState({
       [name]: value,
     });
