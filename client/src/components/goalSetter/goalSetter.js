@@ -39,8 +39,8 @@ export class GoalSetter extends React.Component {
         </p>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Birth year (yyyy):
-            <input type="number" name="birthday" value={this.state.userBirthday} onChange={this.handleChange}></input>
+            Birthday:
+            <input type="date" name="birthday" value={this.state.userBirthday} onChange={this.handleChange}></input>
           </label>
           <label>
             Desired Retirement Age:
