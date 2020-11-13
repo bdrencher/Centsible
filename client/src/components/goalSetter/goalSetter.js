@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './goalSetter.module.css';
+import { Input } from '@material-ui/core';
 
 export class GoalSetter extends React.Component {
   constructor(props) {
@@ -40,19 +41,19 @@ export class GoalSetter extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Birthday:
-            <input type="date" name="birthday" value={this.state.userBirthday} onChange={this.handleChange}></input>
+            <Input type="date" name="birthday" value={this.state.userBirthday} onChange={this.handleChange}></Input>
           </label>
           <label>
             Desired Retirement Age:
-            <input type="number" name="retirementAge" value={this.state.retirementAge} onChange={this.handleChange}></input>
+            <Input type="number" name="retirementAge" value={this.state.retirementAge} onChange={this.handleChange}></Input>
           </label>
           <label>
             Current assets:
-            <input type="number" name="currentAssets" value={this.state.currentAssets} onChange={this.handleChange}></input>
+            <Input type="number" name="currentAssets" value={this.state.currentAssets} onChange={this.handleChange}></Input>
           </label>
           <label>
             Desired funds per year during retirement:
-            <input type="number" name="moneyPerYear" value={this.state.moneyPerYear} onChange={this.handleChange}></input>
+            <Input type="number" name="moneyPerYear" value={this.state.moneyPerYear} onChange={this.handleChange}></Input>
           </label>
           <button type="submit" value="Submit">Save goals</button>
         </form>
