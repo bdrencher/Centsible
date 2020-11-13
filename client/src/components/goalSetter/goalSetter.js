@@ -19,9 +19,9 @@ export class GoalSetter extends React.Component {
     const value = target.value;
     const name = target.name;
     console.log(name, value);
-    // this.setState({
-    //   [name]: value,
-    // });
+    this.setState({
+      [name]: value,
+    });
   }
 
   handleSubmit = (event) => {
@@ -42,7 +42,7 @@ export class GoalSetter extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Birthday:
-            <Input type="date" name="birthday" value={this.state.userBirthday} onChange={this.handleChange}></Input>
+            <Input type="date" name="userBirthday" value={this.state.userBirthday} onChange={this.handleChange}></Input>
           </label>
           <label>
             Desired Retirement Age:
