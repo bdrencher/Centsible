@@ -1,22 +1,22 @@
 module.exports = 
 /*********************************
  * RetirementProfile: class
- * @Date iBirthdate
- * @Number iRetirementAge
- * @Number iCurrentAssets
- * @Number iRetirementGoal
+ * @Number userAge
+ * @Number retirementAge
+ * @Number currentAssets
+ * @Number retirementGoal
  * 
  * Used to store a users retirement
  * data
  ********************************/
 class RetirementProfile {
-    birthdate;
+    userAge;
     retirementAge;
     currentAssets;
     retirementGoal;
     
-    constructor(iBirthdate, iRetirementAge, iCurrentAssets, iRetirementGoal) {
-        this.birthdate = iBirthdate;
+    constructor(iUserAge, iRetirementAge, iCurrentAssets, iRetirementGoal) {
+        this.userAge = iUserAge;
         this.retirementAge = iRetirementAge;
         this.currentAssets = iCurrentAssets;
         this.retirementGoal = iRetirementGoal;

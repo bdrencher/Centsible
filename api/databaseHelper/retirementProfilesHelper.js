@@ -11,9 +11,9 @@ const pool = new Pool({
 
 /*********************************************
  * enterRetirementData
- * @param username: string
- * @param profile: RetirementProfile
- * @param callback: function
+ * @String username
+ * @RetirementProfile profile
+ * @function callback
  * 
  * Creates a unique entry (by userid) to store
  * the users retirement information
@@ -22,7 +22,7 @@ const pool = new Pool({
 function enterRetirementData(username, profile, callback) {
     const query = {
         text: 'INSERT INTO retirement_information VALUES ((SELECT userid FROM users WHERE username = $1), $2, $3, $4, $5)',
-        values: [username, profile.birthyear, profile.retirementAge, profile.retirementGoal, profile.currentAssets]
+        values: [username, profile.birthdate, profile.retirementAge, profile.retirementGoal, profile.currentAssets]
     };
     pool.query(query, (err, result) => {
         if (err) {
