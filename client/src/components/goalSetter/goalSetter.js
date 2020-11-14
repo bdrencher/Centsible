@@ -40,7 +40,7 @@ export class GoalSetter extends React.Component {
         </p>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Birthday:
+            Your current age:
             <Input type="number" name="userAge" value={this.state.userAge} onChange={this.handleChange}></Input>
           </label>
           <label>
