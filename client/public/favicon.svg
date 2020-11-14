@@ -26,10 +26,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="11.52"
-     inkscape:cx="8.024786"
+     inkscape:cx="7.9379804"
      inkscape:cy="35.772616"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      showgrid="false"
      units="px"
      inkscape:window-width="1920"
@@ -64,7 +64,7 @@
      inkscape:label="Layer 2">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:18.27620506px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#d4aa00;fill-opacity:1;stroke:none;stroke-width:0.2855657"
+       style="font-style:normal;font-weight:normal;font-size:18.27620506px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#fecc00;fill-opacity:1;stroke:none;stroke-width:0.2855657;"
        x="-0.63050997"
        y="17.332458"
        id="text24-5"
@@ -73,9 +73,9 @@
          id="tspan22-6"
          x="-0.63050997"
          y="17.332458"
-         style="fill:#d4aa00;stroke-width:0.2855657">C</tspan></text>
+         style="fill:#fecc00;stroke-width:0.2855657;fill-opacity:1;">C</tspan></text>
     <rect
-       style="opacity:1;fill:#d4aa00;fill-opacity:1;stroke-width:0.30641583"
+       style="opacity:1;fill:#fecc00;fill-opacity:1;stroke-width:0.30641583"
        id="rect46-2"
        width="1.4327837"
        height="16.878519"
@@ -114,7 +114,7 @@
          style="stroke-width:0.26457828" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:17.3775959px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#008000;fill-opacity:1;stroke:none;stroke-width:0.27152494"
+       style="font-style:normal;font-weight:normal;font-size:17.3775959px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#009900;fill-opacity:1;stroke:none;stroke-width:0.27152494;"
        x="-71.724365"
        y="289.89246"
        id="text24"
@@ -123,9 +123,9 @@
          id="tspan22"
          x="-71.724365"
          y="289.89246"
-         style="fill:#008000;stroke-width:0.27152494">C</tspan></text>
+         style="fill:#009900;stroke-width:0.27152494;fill-opacity:1;">C</tspan></text>
     <rect
-       style="opacity:1;fill:#008000;fill-opacity:1;stroke-width:0.28294379"
+       style="opacity:1;fill:#009900;fill-opacity:1;stroke-width:0.28294379"
        id="rect46"
        width="1.252563"
        height="16.462406"
