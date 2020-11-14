@@ -20,7 +20,7 @@ const isLocalhost = Boolean(
     )
 );
 
-self.addEventListener("install", (event) => {
+window.addEventListener("install", (event) => {
   event.waitUntil(preLoad());
 });
 
@@ -32,7 +32,7 @@ var preLoad = () => {
   });
 };
 
-self.addEventListener("fetch", (event) => {
+window.addEventListener("fetch", (event) => {
   event.respondWith(checkResponse(event.request).catch(() => {
     return returnFromCache(event.request);
   }));
