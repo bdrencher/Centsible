@@ -4,6 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="manifest" href="./manifest.json">
+    <script>
+      if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("../src/serviceWorker.js").then((reg) => {
+          console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+      }
+    </script>
     <title>Centsible</title>
   </head>
   <body>
