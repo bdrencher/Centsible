@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="centsibleLogo.svg">
+   sodipodi:docname="favicon.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,10 +26,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="11.52"
-     inkscape:cx="23.649786"
+     inkscape:cx="8.024786"
      inkscape:cy="35.772616"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
      inkscape:window-width="1920"
@@ -49,7 +49,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -79,10 +79,10 @@
        id="rect46-2"
        width="1.4327837"
        height="16.878519"
-       x="6.295567"
-       y="2.3800581"
+       x="6.0765777"
+       y="2.5101042"
        ry="0.30168778"
-       transform="matrix(0.95686429,-0.29053525,0.22707947,0.97387623,0,0)" />
+       transform="matrix(0.95056993,-0.31051057,0.24742499,0.96890705,0,0)" />
   </g>
   <g
      inkscape:label="Layer 1"
@@ -99,7 +99,7 @@
          id="tspan14"
          x="6.4181104"
          y="297.457"
-         style="stroke-width:0.26458332"></tspan></text>
+         style="stroke-width:0.26458332" /></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.9330101px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26457828"
@@ -129,9 +129,9 @@
        id="rect46"
        width="1.252563"
        height="16.462406"
-       x="-57.20269"
-       y="271.19247"
+       x="-63.132099"
+       y="269.55591"
        ry="0.29425025"
-       transform="matrix(0.95686429,-0.29053525,0.22707947,0.97387623,0,0)" />
+       transform="matrix(0.95056993,-0.31051057,0.24742499,0.96890705,0,0)" />
   </g>
 </svg>
