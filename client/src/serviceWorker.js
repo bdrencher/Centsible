@@ -20,6 +20,58 @@ const isLocalhost = Boolean(
     )
 );
 
+self.addEventListener("install", (event) => {
+  event.waitUntil(preLoad());
+});
+
+var preLoad = () => {
+  console.log("Installing the web application");
+  return caches.open("offline").then((cache) => {
+    console.log("Chaching index and other routes");
+    return cache.addAll(["/", "/financeEstimator", "/myFinances", "/dashboard", "/offline.html"])
+  });
+};
+
+self.addEventListener("fetch", (event) => {
+  event.respondWith(checkResponse(event.request).catch(() => {
+    return returnFromCache(event.request);
+  }));
+  event.waitUntil(addToCache(event.request));
+});
+
+var checkResponse = (request) => {
+  return new Promise((fulfill, reject) => {
+    fetch(request).then((response) => {
+      if(response.status !== 404) {
+        fulfill(response);
+      } else {
+        reject();
+      }
+    }, reject); // end of promise
+  });
+};
+
+var addToCache = (request) => {
+  return caches.open("offline").then((cache) => {
+    return fetch(request).then((response) => {
+      console.log(response.url + " was cached");
+      return cache.put(request, response);
+    });
+  });
+};
+
+var returnFromCache = (request) => {
+  return caches.open("offline").then((cache) => {
+    return cache.match(request).then((matching) => {
+      if(!matching || matching.status == 404) {
+        return cache.match("offline.html");
+      } else {
+        return matching;
+      }
+    });
+  });
+};
+
 export function register(config) {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
