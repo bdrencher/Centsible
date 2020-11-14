@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   viewBox="0 0 16.933333 16.933334"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="centsibleLogo.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.52"
+     inkscape:cx="23.649786"
+     inkscape:cy="35.772616"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1015"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid12" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer1"
+     sodipodi:insensitive="true" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 2">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.27620506px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#d4aa00;fill-opacity:1;stroke:none;stroke-width:0.2855657"
+       x="-0.63050997"
+       y="17.332458"
+       id="text24-5"
+       transform="matrix(0.97386801,-0.25912623,0.25515468,0.95894179,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan22-6"
+         x="-0.63050997"
+         y="17.332458"
+         style="fill:#d4aa00;stroke-width:0.2855657">C</tspan></text>
+    <rect
+       style="opacity:1;fill:#d4aa00;fill-opacity:1;stroke-width:0.30641583"
+       id="rect46-2"
+       width="1.4327837"
+       height="16.878519"
+       x="6.295567"
+       y="2.3800581"
+       ry="0.30168778"
+       transform="matrix(0.95686429,-0.29053525,0.22707947,0.97387623,0,0)" />
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-280.06665)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="6.4181104"
+       y="288.09323"
+       id="text16"><tspan
+         sodipodi:role="line"
+         id="tspan14"
+         x="6.4181104"
+         y="297.457"
+         style="stroke-width:0.26458332"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.9330101px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26457828"
+       x="2.0440507"
+       y="293.72125"
+       id="text20"
+       transform="scale(1.000019,0.99998101)"><tspan
+         sodipodi:role="line"
+         id="tspan18"
+         x="2.0440507"
+         y="308.703"
+         style="stroke-width:0.26457828" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3775959px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#008000;fill-opacity:1;stroke:none;stroke-width:0.27152494"
+       x="-71.724365"
+       y="289.89246"
+       id="text24"
+       transform="matrix(0.97425871,-0.2592302,0.25505235,0.95855722,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan22"
+         x="-71.724365"
+         y="289.89246"
+         style="fill:#008000;stroke-width:0.27152494">C</tspan></text>
+    <rect
+       style="opacity:1;fill:#008000;fill-opacity:1;stroke-width:0.28294379"
+       id="rect46"
+       width="1.252563"
+       height="16.462406"
+       x="-57.20269"
+       y="271.19247"
+       ry="0.29425025"
+       transform="matrix(0.95686429,-0.29053525,0.22707947,0.97387623,0,0)" />
+  </g>
+</svg>

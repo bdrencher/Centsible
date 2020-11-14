@@ -1,12 +1,12 @@
 {
   "short_name": "Centsible",
   "name": "Centsible",
-  "start_url": ".",
+  "start_url": "https://centsible-finance.herokuapp.com/",
   "description": "Ben Rencher C499 Senior Project application",
   "orientation": "any",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon.svg",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
