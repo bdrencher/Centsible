@@ -31,7 +31,7 @@ app.post('/createUser', (req, res) => {
 });
 
 app.post('/validateCredentials', (req, res) => {
-    users.validateUserCredentials(req.body.username, req.b4ody.password, res)
+    users.validateUserCredentials(req.body.username, req.body.password, res)
 });
 
 app.delete('/deleteUser', (req, res) => {
