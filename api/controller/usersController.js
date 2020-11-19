@@ -20,7 +20,7 @@ function createUser(username, passhash, res) {
         if (err) {
             res.status(500).json({Success: false});
         } else {
-            res.status(200).json({Success: true});
+            res.status(201).json({Success: true});
         }
     });
 }
@@ -44,7 +44,7 @@ function validateUserCredentials(username, password, res) {
                 } else if (isValid) {
                     res.status(200).json({Success: true, validCredentials: true});
                 } else {
-                    res.status(200).json({Success: true, validCredentials: false});
+                    res.status(401).json({Success: true, validCredentials: false});
                 }
             });
         }
