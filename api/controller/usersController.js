@@ -35,7 +35,7 @@ function validateUserCredentials(username, password, res) {
     usersHelper.getUserPasshash(username, (err, result) => {
         if (!result) {
             console.log(err);
-            res.status(401).json({Success: false, validCredentials: false});
+            res.status(200).json({Success: false, validCredentials: false});
         } else {
             bcrypt.compare(password, result.passhash, (err, isValid) => {
                 if (err) {
