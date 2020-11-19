@@ -1,7 +1,7 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
 import PropTypes from 'prop-types';
 import styles from './login.module.css';
+import { ApiCommunicator } from '../../services/apiCommunicator';
 
 export class Login extends React.Component {
   constructor(props) {
@@ -22,7 +22,9 @@ export class Login extends React.Component {
   }
 
   handleSubmit = (event) => {
-
+    const api = new ApiCommunicator();
+    api.validateCredentials(JSON.stringify(this.state.value));
+    event.preventDefault();
   }
 
   handleClick = () => {
