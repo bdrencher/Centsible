@@ -8,7 +8,7 @@ export class Login extends React.Component {
     super(props);
     this.state = {
       username: "",
-      passhash: "",
+      password: "",
     };
   }
 
@@ -23,7 +23,7 @@ export class Login extends React.Component {
 
   handleSubmit = (event) => {
     const api = new ApiCommunicator();
-    api.validateCredentials(JSON.stringify(this.state.value));
+    api.validateCredentials(this.state.username, this.state.password);
     event.preventDefault();
   }
 
