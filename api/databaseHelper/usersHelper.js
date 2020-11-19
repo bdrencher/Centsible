@@ -77,6 +77,7 @@ function insertUserPasshash(username, passhash) {
         values: [username]
     }
     pool.query(query, (err, result) => {
+        console.log(err, result);
         if (err || result == null) {
             console.log(err);
             callback(err, false);
