@@ -17,7 +17,7 @@ export class ApiCommunicator {
      * @returns Boolean indicating success or failure
      **********************************************/
     createUser(username, password) {
-        axios.post(apiUrlRoot + '/createUser', {
+        axios.post(this.apiUrlRoot + '/createUser', {
             username: username,
             password: password
         })
@@ -40,7 +40,7 @@ export class ApiCommunicator {
      * @returns Boolean indicating success or failure
      **********************************************/
     validateCredentials(username, password) {
-        axios.post(apiUrlRoot + '/validateCredentials', {
+        axios.post(this.apiUrlRoot + '/validateCredentials', {
             username: username,
             password: password
         })
@@ -60,7 +60,7 @@ export class ApiCommunicator {
      * @returns Boolean indicating success or failure
      **********************************************/
     deleteUser(username) {
-        axios.delete(apiUrlRoot + '/deleteUser', {
+        axios.delete(this.apiUrlRoot + '/deleteUser', {
             username: username
         })
         .then((response) => {
@@ -80,7 +80,7 @@ export class ApiCommunicator {
      * @returns Boolean indicating success or failure
      **********************************************/
     createRetirementProfile(username, profile) {
-        axios.post(apiUrlRoot + '/createRetirementProfile', {
+        axios.post(this.apiUrlRoot + '/createRetirementProfile', {
             username: username,
             profile: profile
         })
@@ -101,7 +101,7 @@ export class ApiCommunicator {
      * @returns Boolean indicating success or failure
      **********************************************/
     updateRetirementProfile(username, profile) {
-        axios.put(apiUrlRoot + '/updateRetirement', {
+        axios.put(this.apiUrlRoot + '/updateRetirement', {
             username: username,
             profile: profile
         })
@@ -121,7 +121,7 @@ export class ApiCommunicator {
      * @returns RetirementProfile
      **********************************************/
     retrieveRetirementProfile(username) {
-        axios.post(apiUrlRoot + '/getRetirementProfile', {
+        axios.post(this.apiUrlRoot + '/getRetirementProfile', {
             username: username
         })
         .then((response) => {
