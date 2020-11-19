@@ -40,10 +40,10 @@ export class Login extends React.Component {
         <div>
           <form>
             <label>Username
-              <input type="text" onChange={this.handleChange}></input>
+              <input type="text" name="username" onChange={this.handleChange}></input>
             </label>
             <label>Password
-              <input type="password" onChange={this.handleChange}></input>
+              <input type="password" name="password" onChange={this.handleChange}></input>
             </label>
             <button onClick={this.handleSubmit}>Login</button>
           </form>
