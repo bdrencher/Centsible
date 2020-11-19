@@ -45,7 +45,12 @@ export class ApiCommunicator {
             password: password
         })
         .then((response) => {
-            console.log(response);
+            if (!response.data.Success || !response.data.validCredentials) {
+                alert("Invalid credentials, please try again or create an account.");
+                return false;
+            } else {
+                return true;
+            }
         })
         .catch((error) => {
             console.log(error);

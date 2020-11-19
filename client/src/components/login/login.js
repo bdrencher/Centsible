@@ -23,12 +23,11 @@ export class Login extends React.Component {
 
   handleSubmit = (event) => {
     const api = new ApiCommunicator();
-    api.validateCredentials(this.state.username, this.state.password);
+    const result = api.validateCredentials(this.state.username, this.state.password);
+    if (result) {
+      this.props.history.push("/dashboard");
+    }
     event.preventDefault();
-  }
-
-  handleClick = () => {
-    this.props.history.push("/dashboard");
   }
 
   render () {
