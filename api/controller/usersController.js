@@ -44,7 +44,7 @@ function validateUserCredentials(username, password, res) {
                 } else if (isValid) {
                     res.status(200).json({Success: true, validCredentials: true});
                 } else {
-                    res.status(401).json({Success: true, validCredentials: false});
+                    res.status(200).json({Success: true, validCredentials: false});
                 }
             });
         }
