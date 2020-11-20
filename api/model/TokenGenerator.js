@@ -1,5 +1,4 @@
 export class TokenGenerator {
-    token;
     tokenRules = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890-=[]{}?/.,<>|!@#$%^&*()"
 
     generateToken() {
