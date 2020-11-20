@@ -49,6 +49,7 @@ export class ApiCommunicator {
                 alert("Invalid credentials, please try again or create an account.");
                 return false;
             } else {
+                localStorage.setItem("sessionToken", response.data.token);
                 return true;
             }
         })
