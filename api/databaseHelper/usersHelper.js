@@ -2,7 +2,9 @@ module.exports = {
     createUser: createUser,
     insertUserPasshash: insertUserPasshash,
     getUserPasshash: getUserCredentials,
-    deleteUser: deletePasshashData
+    deleteUser: deletePasshashData,
+    associateFirstAccessToken: associateFirstAccessToken,
+    scrambleToken: scrambleToken
 }
 
 const { Pool } = require('pg');
@@ -71,7 +73,7 @@ function insertUserPasshash(username, passhash) {
  * on to the callback
  ******************************************/
 
- function getUserCredentials(username, callback) {
+function getUserCredentials(username, callback) {
     const query = {
         text: 'SELECT passhash FROM password_hash WHERE userid = (SELECT userid FROM users WHERE username = $1)',
         values: [username]
@@ -84,14 +86,14 @@ function insertUserPasshash(username, passhash) {
             callback(null, result.rows[0]);
         }
     });
- }
+}
 
- /*****************************************
+/*****************************************
   * @desc deletes a user from the database
   * @param username string
   * @param callback function
   ****************************************/
- function deleteUser(username) {
+function deleteUser(username) {
     const query = {
         text: 'DELETE FROM users WHERE userid = (SELECT userid FROM users WHERE username = $1)',
         values: [username]
@@ -101,13 +103,13 @@ function insertUserPasshash(username, passhash) {
             console.log(err);
         }
     });
- }
+}
 
- /*****************************************
+/*****************************************
   * @desc deletes retirement data
   * @param username string
   ****************************************/
- function deleteRetirementData(username, callback) {
+function deleteRetirementData(username, callback) {
     const query = {
         text: 'DELETE FROM retirement_information WHERE userid = (SELECT userid FROM users WHERE username = $1)',
         values: [username]
@@ -120,13 +122,13 @@ function insertUserPasshash(username, passhash) {
             callback(null, true);
         }
     });
- }
+}
 
- /*******************************************
+/*******************************************
   * @desc deletes passhash data
   * @param username string
   ******************************************/
- function deletePasshashData(username, callback) {
+function deletePasshashData(username, callback) {
     const query = {
         text: 'DELETE FROM password_hash WHERE userid = (SELECT userid FROM users WHERE username = $1)',
         values: [username]
@@ -146,4 +148,50 @@ function insertUserPasshash(username, passhash) {
             callback(null, true);
         }
     });
- }
+}
+
+/***************************************
+ * @desc associates the token with the
+ * username
+ * 
+ * @string token
+ * @string username
+ * @function callback takes error, result
+ ****************************************/
+function associateFirstAccessToken(token, username, callback) {
+    const query = {
+        text = 'UPDATE users SET access_token = $1 WHERE username = $2',
+        values = [token, username]
+    };
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.log(err);
+            callback(err, false);
+        } else {
+            callback(null, true);
+        }
+    });
+}
+
+/******************************************
+ * @desc assigns a random token as the users
+ * new token
+ * 
+ * @string oldToken
+ * @string newToken
+ * @function callbak takes error, result
+ *****************************************/
+function scrambleToken(oldToken, newToken) {
+    const query = {
+        text: 'UPDATE users SET access_token = $1 WHERE access_token = $2',
+        values = [newToken, oldToken]
+    };
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.log(err);
+            callback(err, false);
+        } else {
+            callback(null, true);
+        }
+    });
+}
