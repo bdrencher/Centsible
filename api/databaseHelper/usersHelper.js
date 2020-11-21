@@ -2,7 +2,6 @@ module.exports = {
     createUser: createUser,
     insertUserPasshash: insertUserPasshash,
     getUserPasshash: getUserCredentials,
-    deleteUser: deletePasshashData,
     associateFirstAccessToken: associateFirstAccessToken,
     scrambleToken: scrambleToken
 }
@@ -88,66 +87,32 @@ function getUserCredentials(username, callback) {
     });
 }
 
-/*****************************************
-  * @desc deletes a user from the database
-  * @param username string
-  * @param callback function
-  ****************************************/
-function deleteUser(username) {
-    const query = {
-        text: 'DELETE FROM users WHERE userid = (SELECT userid FROM users WHERE username = $1)',
-        values: [username]
-    };
-    pool.query(query, (err, result) => {
-        if (err) {
-            console.log(err);
-        }
-    });
-}
-
-/*****************************************
-  * @desc deletes retirement data
-  * @param username string
-  ****************************************/
-function deleteRetirementData(username, callback) {
-    const query = {
-        text: 'DELETE FROM retirement_information WHERE userid = (SELECT userid FROM users WHERE username = $1)',
-        values: [username]
-    };
-    pool.query(query, (err, result) => {
-        if (err) {
-            console.log(err);
-            callback(err, false);
-        } else {
-            callback(null, true);
-        }
-    });
-}
-
 /*******************************************
-  * @desc deletes passhash data
+  * @desc deletes the user
   * @param username string
   ******************************************/
-function deletePasshashData(username, callback) {
-    const query = {
+function deleteUser(username) {
+    const queryOne = {
         text: 'DELETE FROM password_hash WHERE userid = (SELECT userid FROM users WHERE username = $1)',
         values: [username]
     };
-    pool.query(query, (err, result) => {
-        if (err) {
-            console.log(err);
-            callback(err, false);
-        } else {
-            deleteRetirementData(username, (err, result) => {
-                if (err) {
-                    console.log(err);
-                } else {
-                    deleteUser(username);
-                }
-            });
-            callback(null, true);
-        }
-    });
+    const queryTwo = {
+        text: 'DELETE FROM retirement_information WHERE userid = (SELECT userid FROM users WHERE username = $1)',
+        values: [username]
+    };
+    const queryThree = {
+        text: 'DELETE from users WHERE userid = (SELECT userid FROM users WHERE username = $1)',
+        values: [username]
+    };
+    pool.query(queryOne)
+    .then(pool.query(queryTwo))
+    .then(pool.query(queryThree))
+    .finally(() => {
+        console.log("user " + username + " has been deleted");
+    })
+    .catch((error) => {
+        console.log(error);
+    })
 }
 
 /***************************************
@@ -166,9 +131,9 @@ function associateFirstAccessToken(token, username, callback) {
     pool.query(query, (err, result) => {
         if (err) {
             console.log(err);
-            callback(err, false);
+            callback(err, false, null);
         } else {
-            callback(null, true);
+            callback(null, true, token);
         }
     });
 }
@@ -181,7 +146,7 @@ function associateFirstAccessToken(token, username, callback) {
  * @string newToken
  * @function callbak takes error, result
  *****************************************/
-function scrambleToken(oldToken, newToken) {
+function scrambleToken(oldToken, newToken, callback) {
     const query = {
         text: 'UPDATE users SET access_token = $1 WHERE access_token = $2',
         values = [newToken, oldToken]

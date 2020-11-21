@@ -1,12 +1,16 @@
 module.exports = {
     createUser: createUser,
     validateUserCredentials: validateUserCredentials,
-    deleteUser: deleteUser
+    deleteUser: deleteUser,
+    logoutUser: logoutUser
 }
+
+import { TokenGenerator } from "../model/TokenGenerator";
 
 const usersHelper = require('../databaseHelper/usersHelper');
 const bcrypt = require('bcrypt');
 const User = require ('../model/user');
+const tokenGenerator = new TokenGenerator();
 
 /********************************************
  * @desc creates a new user
@@ -20,7 +24,13 @@ function createUser(username, passhash, res) {
         if (err) {
             res.status(500).json({Success: false});
         } else {
-            res.status(201).json({Success: true});
+            usersHelper.associateFirstAccessToken(tokenGenerator.generateToken(), username, (err, result, token) => {
+                if (!result) {
+                    res.status(500).json({Success: false })
+                } else {
+                    res.status(201).json({Success: true, access_token: token});
+                }
+            });
         }
     });
 }
@@ -42,7 +52,13 @@ function validateUserCredentials(username, password, res) {
                     console.log(err);
                     res.status(500).json({Success: false, validCredentials: false});
                 } else if (isValid) {
-                    res.status(200).json({Success: true, validCredentials: true});
+                    usersHelper.associateFirstAccessToken(tokenGenerator.generateToken(), username, (err, result, token) => {
+                        if (!result) {
+                            res.status(500).json({Success: false, validCredentials: false })
+                        } else {
+                            res.status(200).json({Success: true, validCredentials: true, access_token: token});
+                        }
+                    });
                 } else {
                     res.status(200).json({Success: true, validCredentials: false});
                 }
@@ -52,17 +68,29 @@ function validateUserCredentials(username, password, res) {
 }
 
 /**************************************************
+ * @desc replaces the user's previous access key
+ * with something else
+ * 
+ * @string token
+ *************************************************/
+function logoutUser(token, res) {
+
+    usersHelper.scrambleToken(token, tokenGenerator.generateToken(), (err, result) => {
+        if (err) {
+            res.status(500);
+        } else {
+            res.status(200);
+        }
+    });
+}
+
+
+/**************************************************
  * @desc Deletes a user and their retirement data
  * @param username string
  * @param httpResponse res
  *************************************************/
 function deleteUser(username, res) {
-    usersHelper.deleteUser(username, (err, result) => {
-        if (err) {
-            console.log(err);
-            res.status(500).json({ Success: result });
-        } else {
-            res.status(200).json({ Success: result });
-        }
-    });
+    usersHelper.deleteUser(username);
+    res.status(200);
 }
