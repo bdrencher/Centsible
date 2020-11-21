@@ -30,6 +30,10 @@ export class Login extends React.Component {
     event.preventDefault();
   }
 
+  handleClick() {
+    this.props.history.push("/createAccount");
+  }
+
   render () {
     return (
       <div className="content">
@@ -47,7 +51,7 @@ export class Login extends React.Component {
             <button onClick={this.handleSubmit}>Login</button>
           </form>
           <div>
-            <button onClick={this.props.history.push("/createAccount")}>Create Account</button>
+            <button onClick={this.handleClick}>Create Account</button>
           </div>
         </div>
       </div>

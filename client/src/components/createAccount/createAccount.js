@@ -35,6 +35,10 @@ export class CreateAccount extends React.Component {
     });
   }
 
+  handleClick() {
+    this.props.history.push("/");
+  }
+
   render() {
     return (
       <div className="content">
@@ -53,7 +57,7 @@ export class CreateAccount extends React.Component {
           </label>
           <button type="submit">Submit</button>
         </form>
-        <button onClick={this.props.history.push("/")}>Return to Login</button>
+        <button onClick={this.handleClick}>Return to Login</button>
       </div>
     )
   }
