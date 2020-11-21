@@ -30,7 +30,7 @@ export class Login extends React.Component {
     event.preventDefault();
   }
 
-  handleClick() {
+  handleClick = () => {
     this.props.history.push("/createAccount");
   }
 

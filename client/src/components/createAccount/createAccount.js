@@ -35,7 +35,7 @@ export class CreateAccount extends React.Component {
     });
   }
 
-  handleClick() {
+  handleClick = () => {
     this.props.history.push("/");
   }
 
