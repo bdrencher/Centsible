@@ -5,13 +5,12 @@ module.exports = {
     logoutUser: logoutUser
 }
 
-import { TokenGenerator } from "../model/TokenGenerator";
-
+const AccessTokenGenerator = require('../model/TokenGenerator');
 const accessTokenController = require('./accessTokenController');
 const usersHelper = require('../databaseHelper/usersHelper');
 const bcrypt = require('bcrypt');
 const User = require ('../model/user');
-const tokenGenerator = new TokenGenerator();
+const tokenGenerator = new AccessTokenGenerator();
 
 /********************************************
  * @desc creates a new user

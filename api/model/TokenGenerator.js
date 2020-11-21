@@ -1,5 +1,7 @@
-export class TokenGenerator {
-    tokenRules = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890-=[]{}?/.,<>|!@#$%^&*()"
+module.exports = 
+class TokenGenerator {
+    tokenRules = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890-=[]{}?/.,<>|!@#$%^&*()";
+
 
     generateToken() {
         const length = this.tokenRules.length;
