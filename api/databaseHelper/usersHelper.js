@@ -3,7 +3,8 @@ module.exports = {
     insertUserPasshash: insertUserPasshash,
     getUserPasshash: getUserCredentials,
     associateFirstAccessToken: associateFirstAccessToken,
-    scrambleToken: scrambleToken
+    scrambleToken: scrambleToken,
+    validateAccessToken: validateAccessToken
 }
 
 const { Pool } = require('pg');
@@ -157,6 +158,21 @@ function scrambleToken(oldToken, newToken, callback) {
             callback(err, false);
         } else {
             callback(null, true);
+        }
+    });
+}
+
+function validateAccessToken(username, callback) {
+    const query = {
+        text: 'SELECT access_token FROM users WHERE username = $1',
+        values: [username]
+    }
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.log(err);
+            callback(err, false);
+        } else {
+            callback(null, result.rows[0]);
         }
     });
 }

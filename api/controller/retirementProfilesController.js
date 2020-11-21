@@ -4,54 +4,78 @@ module.exports = {
     getRetirementProfile: getRetirementProfile
 }
 
+const accessTokenController = require('./accessTokenController');
 const retirementProfilesHelper = require('../databaseHelper/retirementProfilesHelper');
 const RetirementProfile = require('../model/retirementProfile');
 
 /*****************************************************************
  * @desc sends data to database helper
  * to create a retirement profile
- * @param string username 
- * @param RetirementProfile profile - contains user's data
- * @param httpResponse res - sends response to client
+ * @string username 
+ * @string hashedToken
+ * @RetirementProfile profile - contains user's data
+ * @httpResponse res - sends response to client
  *****************************************************************/
-function createRetirementProfile(username, profile, res) {
-    retirementProfilesHelper.enterRetirementData(username, profile, (err, result) => {
+function createRetirementProfile(username, hashedToken, profile, res) {
+    accessTokenController.validateUserAccessToken(username, hashedToken, (err, result) => {
         if (err) {
             res.status(500).json({ Success: false });
+        } else if (result) {
+            retirementProfilesHelper.enterRetirementData(username, profile, (err, result) => {
+                if (err) {
+                    res.status(500).json({ Success: false });
+                } else {
+                    res.status(200).json({ Success: true });
+                }
+            });
         } else {
-            res.status(200).json({ Success: true });
+            res.status(500).json({ Success: false, invalidCredentials: true });
         }
     });
 }
 
  /*****************************************************************
  * @desc updates the provided user's profile with the given profile
- * @param string username
- * @param RetirementProfile profile
- * @param httpResponse res - sends response to client
+ * @string username
+ * @string hashedToken
+ * @RetirementProfile profile
+ * @httpResponse res - sends response to client
  *****************************************************************/
-function updateRetirementProfile(username, profile, res) {
-    retirementProfilesHelper.updateRetirementData(username, profile, (err, result) => {
-        if (err) {
-            res.status(500).json({ Success: false });
+function updateRetirementProfile(username, hashedToken, profile, res) {
+    accessTokenController.validateUserAccessToken(username, hashedToken, (err, result) => {
+        if (result) {
+            retirementProfilesHelper.updateRetirementData(username, profile, (err, result) => {
+                if (err) {
+                    res.status(500).json({ Success: false });
+                } else {
+                    res.status(200).json({ Success: true });
+                }
+            });
         } else {
-            res.status(200).json({ Success: true });
+            res.status(500).json({Success: false, invalidCredentials: true})
         }
     });
 }
 
  /****************************************************
  * @desc retrieves the user's retirement profile data
- * @param string username
- * @param httpResponse res - sends response to client
+ * @string username
+ * @string hashedToken
+ * @httpResponse res - sends response to client
  ****************************************************/
-function getRetirementProfile(username, res) {
-    retirementProfilesHelper.getRetirementData(username, (err, result) => {
-        if (err) {
-            res.status(500).json({ Success: false });
+function getRetirementProfile(username, hashedToken, res) {
+    accessTokenController.validateUserAccessToken(username, hashedToken, (err, result) => {
+        if(result) {
+            retirementProfilesHelper.getRetirementData(username, (err, result) => {
+                if (err) {
+                    res.status(500).json({ Success: false });
+                } else {
+                    let profile = new RetirementProfile(result.birthyear, result.retirement_age, result.current_assets, result.retirement_goal);
+                    res.status(200).json({ Success: true, profile: profile });
+                }
+            });
         } else {
-            let profile = new RetirementProfile(result.birthyear, result.retirement_age, result.current_assets, result.retirement_goal);
-            res.status(200).json({ Success: true, profile: profile });
+            res.status(500).json({Success: false, invalidCredentials: true});
         }
     });
 }

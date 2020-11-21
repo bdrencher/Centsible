@@ -7,6 +7,7 @@ module.exports = {
 
 import { TokenGenerator } from "../model/TokenGenerator";
 
+const accessTokenController = require('./accessTokenController');
 const usersHelper = require('../databaseHelper/usersHelper');
 const bcrypt = require('bcrypt');
 const User = require ('../model/user');
@@ -28,7 +29,13 @@ function createUser(username, passhash, res) {
                 if (!result) {
                     res.status(500).json({Success: false })
                 } else {
-                    res.status(201).json({Success: true, access_token: token});
+                    bcrypt.hash(token, 10, (err, result) => {
+                        if (err) {
+                            res.status(500).json({Success: false});
+                        } else {
+                            res.status(201).json({Success: true, access_token: result});
+                        }
+                    });
                 }
             });
         }
@@ -56,7 +63,14 @@ function validateUserCredentials(username, password, res) {
                         if (!result) {
                             res.status(500).json({Success: false, validCredentials: false })
                         } else {
-                            res.status(200).json({Success: true, validCredentials: true, access_token: token});
+                            bcrypt.hash(token, 10, (err, result) => {
+                                if (err) {
+                                    res.status(500).json({Success: false, validCredentials: false});
+                                }
+                                else {
+                                    res.status(200).json({Success: true, validCredentials: true, access_token: result});
+                                }
+                            });
                         }
                     });
                 } else {
@@ -87,10 +101,17 @@ function logoutUser(token, res) {
 
 /**************************************************
  * @desc Deletes a user and their retirement data
- * @param username string
- * @param httpResponse res
+ * @string username
+ * @string hashedToken
+ * @httpResponse res
  *************************************************/
-function deleteUser(username, res) {
-    usersHelper.deleteUser(username);
-    res.status(200);
+function deleteUser(username, hashedToken, res) {
+    accessTokenController.validateUserAccessToken(username, hashedToken, (err, result) => {
+        if (result) {
+            usersHelper.deleteUser(username);
+            res.status(200).json({Success: true});
+        } else {
+            res.status(500).json({Success: false, invalidCredentials: true});
+        }
+    });
 }
