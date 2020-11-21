@@ -169,9 +169,9 @@ function testRussel1000() {
     testIndexFundResult(2, principle500, false, 45, answer500);
 }
 
-testSnP500();
-testNASDAQ();
-testRussel1000();
-testIndexFundResult(0, 50, false, 32, 1056);
-testIndexFundResult(2, 42, true, 23, 305);
-testIndexFundResult(1, 289347, false, 50, 202610315);
+// testSnP500();
+// testNASDAQ();
+// testRussel1000();
+// testIndexFundResult(0, 50, false, 32, 1056);
+// testIndexFundResult(2, 42, true, 23, 305);
+// testIndexFundResult(1, 289347, false, 50, 202610315);
