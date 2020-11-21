@@ -66,9 +66,10 @@ export class ApiCommunicator {
      * @string username
      * @returns Boolean indicating success or failure
      **********************************************/
-    deleteUser(username) {
+    deleteUser(username, access_token) {
         axios.delete(this.apiUrlRoot + '/deleteUser', {
-            username: username
+            username: username,
+            access_token: access_token
         })
         .then((response) => {
             console.log(response);
