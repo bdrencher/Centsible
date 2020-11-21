@@ -46,6 +46,9 @@ export class Login extends React.Component {
             </label>
             <button onClick={this.handleSubmit}>Login</button>
           </form>
+          <div>
+            <button onClick={this.props.history.push("/createAccount")}>Create Account</button>
+          </div>
         </div>
       </div>
     )
