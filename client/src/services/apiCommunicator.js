@@ -91,7 +91,8 @@ export class ApiCommunicator {
             profile: profile
         })
         .then((response) => {
-            console.log(response);
+            localStorage.setItem("user", username);
+            localStorage.setItem("access_token", response.data.access_token);
         })
         .catch((error) => {
             console.log(error);
