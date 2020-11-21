@@ -126,8 +126,8 @@ function deleteUser(username) {
  ****************************************/
 function associateFirstAccessToken(token, username, callback) {
     const query = {
-        text = 'UPDATE users SET access_token = $1 WHERE username = $2',
-        values = [token, username]
+        text: 'UPDATE users SET access_token = $1 WHERE username = $2',
+        values: [token, username]
     };
     pool.query(query, (err, result) => {
         if (err) {
@@ -150,7 +150,7 @@ function associateFirstAccessToken(token, username, callback) {
 function scrambleToken(oldToken, newToken, callback) {
     const query = {
         text: 'UPDATE users SET access_token = $1 WHERE access_token = $2',
-        values = [newToken, oldToken]
+        value: [newToken, oldToken]
     };
     pool.query(query, (err, result) => {
         if (err) {
