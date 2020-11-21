@@ -1,6 +1,6 @@
 module.exports = 
 class TokenGenerator {
-    tokenRules = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890-=[]{}?/.,<>|!@#$%^&*()";
+    tokenRules = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890-=[]{}?/.<>|!@#$%^&*()";
 
 
     generateToken() {
@@ -10,6 +10,6 @@ class TokenGenerator {
             newToken.push(this.tokenRules[Math.floor(Math.random() * length)]);
         }
 
-        return newToken.join(',');
+        return newToken.join('');
     }
 }
