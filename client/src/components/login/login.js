@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './login.module.css';
 import { ApiCommunicator } from '../../services/apiCommunicator';
+import { Input } from '@material-ui/core';
 
 export class Login extends React.Component {
   constructor(props) {
@@ -43,10 +44,10 @@ export class Login extends React.Component {
         <div>
           <form>
             <label>Username
-              <input type="text" name="username" onChange={this.handleChange}></input>
+              <Input type="text" name="username" onChange={this.handleChange}></Input>
             </label>
             <label>Password
-              <input type="password" name="password" onChange={this.handleChange}></input>
+              <Input type="password" name="password" onChange={this.handleChange}></Input>
             </label>
             <button onClick={this.handleSubmit}>Login</button>
           </form>
