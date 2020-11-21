@@ -35,20 +35,20 @@ app.post('/validateCredentials', (req, res) => {
 });
 
 app.delete('/deleteUser', (req, res) => {
-    users.deleteUser(req.body.username, res);
+    users.deleteUser(req.body.username, req.body.access_token, res);
 })
 
 /******** RETIREMENT PROFILES *********/
 app.post('/createRetirementProfile', (req, res) => {
-    retirementProfiles.createRetirementProfile(req.body.username, req.body.profile, res);
+    retirementProfiles.createRetirementProfile(req.body.username, req.body.access_token, req.body.profile, res);
 });
 
 app.put('/updateRetirementProfile', (req, res) => {
-    retirementProfiles.updateRetirementProfile(req.body.username, req.body.profile, res);
+    retirementProfiles.updateRetirementProfile(req.body.username, req.body.access_token, req.body.profile, res);
 });
 
 app.post('/getRetirementProfile', (req, res) => {
-    retirementProfiles.getRetirementProfile(req.body.username, res);
+    retirementProfiles.getRetirementProfile(req.body.username, req.body.access_token, res);
 });
 
 app.listen(port, () => {
