@@ -15,6 +15,10 @@ export class Dashboard extends React.Component {
     this.props.history.push("/myFinances");
   }
 
+  goToAccountSettings = () => {
+    this.props.history.push("/accountSettings");
+  }
+
   render() {
     return (
       <div className="content">
@@ -24,6 +28,7 @@ export class Dashboard extends React.Component {
         <div>
           <button onClick={this.goToFinanceEstimator}>Estimate an Investment</button>
           <button onClick={this.goToGoalSetter}>My Finances</button>
+          <button onClick={this.goToAccountSettings}>Settings</button>
         </div>
       </div>
     )

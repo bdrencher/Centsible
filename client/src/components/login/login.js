@@ -27,6 +27,8 @@ export class Login extends React.Component {
     const result = api.validateCredentials(this.state.username, this.state.password);
     if (result) {
       this.props.history.push("/dashboard");
+    } else {
+      alert("Login failed, please try again or create an account.")
     }
     event.preventDefault();
   }
