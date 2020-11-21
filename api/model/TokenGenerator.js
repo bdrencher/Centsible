@@ -7,7 +7,7 @@ class TokenGenerator {
         const length = this.tokenRules.length;
         let newToken = [];
         for (let i = 0; i < 90; i++) {
-            newToken.push(Math.floor(Math.random() * length));
+            newToken.push(tokenRules[Math.floor(Math.random() * length)]);
         }
 
         return newToken.join(',');
