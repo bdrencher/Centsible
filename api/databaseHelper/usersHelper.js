@@ -125,7 +125,6 @@ function deleteUser(username) {
  * @function callback takes error, result
  ****************************************/
 function associateFirstAccessToken(token, username, callback) {
-    console.log(token, token.length);
     const query = {
         text: 'UPDATE users SET access_token = $1 WHERE username = $2',
         values: [token, username]
