@@ -22,7 +22,8 @@ export class ApiCommunicator {
             password: password
         })
         .then((response) => {
-            console.log(response);
+            localStorage.setItem("user", username);
+            localStorage.setItem("access_token", response.data.access_token);
         })
         .catch((error) => {
             console.log(error);
@@ -91,8 +92,7 @@ export class ApiCommunicator {
             profile: profile
         })
         .then((response) => {
-            localStorage.setItem("user", username);
-            localStorage.setItem("access_token", response.data.access_token);
+            console.log(response);
         })
         .catch((error) => {
             console.log(error);
