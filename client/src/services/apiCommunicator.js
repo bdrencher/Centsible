@@ -69,9 +69,12 @@ export class ApiCommunicator {
      **********************************************/
     deleteUser(username, access_token) {
         console.log(username, access_token);
-        axios.delete(this.apiUrlRoot + '/deleteUser', {
-            username: username,
-            access_token: access_token
+        axios({
+            method: 'delete',
+            url: this.apiUrlRoot + '/deleteUser',
+            data: {
+                username: username,
+                access_token: access_token
         })
         .then((response) => {
             console.log(response);
