@@ -1,3 +1,5 @@
+import { useHistory, usreHistory } from "react-router-dom";
+
 const axios = require('axios').default;
 
 /*****************************************************
@@ -41,6 +43,7 @@ export class ApiCommunicator {
      * @returns Boolean indicating success or failure
      **********************************************/
     validateCredentials(username, password) {
+        const history = useHistory();
         axios.post(this.apiUrlRoot + '/validateCredentials', {
             username: username,
             password: password
@@ -52,7 +55,7 @@ export class ApiCommunicator {
             } else {
                 localStorage.setItem("access_token", response.data.access_token);
                 localStorage.setItem("user", username);
-                this.props.history.push("/dashboard");
+                history.push("/dashboard");
             }
         })
         .catch((error) => {
