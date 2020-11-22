@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './dashboard.module.css';
 
 export class Dashboard extends React.Component {
