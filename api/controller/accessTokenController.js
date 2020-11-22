@@ -14,6 +14,7 @@ const bcrypt = require('bcrypt');
  ************************************************/
 function validateUserAccessToken(username, hashedToken, callback) {
     usersHelper.validateAccessToken(username, (err, result) => {
+        console.log(result);
         if (err) {
             res.status(500).json({Success: false});
         } else {
