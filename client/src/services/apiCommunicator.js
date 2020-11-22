@@ -50,7 +50,7 @@ export class ApiCommunicator {
                 alert("Invalid credentials, please try again or create an account.");
                 
             } else {
-                localStorage.setItem("sessionToken", response.data.token);
+                localStorage.setItem("access_token", response.data.access_token);
                 localStorage.setItem("user", username);
                 this.props.history.push("/dashboard");
             }
@@ -88,9 +88,10 @@ export class ApiCommunicator {
      * @RetirementProfile profile
      * @returns Boolean indicating success or failure
      **********************************************/
-    createRetirementProfile(username, profile) {
+    createRetirementProfile(username, access_token, profile) {
         axios.post(this.apiUrlRoot + '/createRetirementProfile', {
             username: username,
+            access_token: access_token,
             profile: profile
         })
         .then((response) => {
@@ -109,9 +110,10 @@ export class ApiCommunicator {
      * @RetirementProfile profile
      * @returns Boolean indicating success or failure
      **********************************************/
-    updateRetirementProfile(username, profile) {
+    updateRetirementProfile(username, access_token, profile) {
         axios.put(this.apiUrlRoot + '/updateRetirement', {
             username: username,
+            access_token: access_token,
             profile: profile
         })
         .then((response) => {
@@ -129,9 +131,10 @@ export class ApiCommunicator {
      * @string username
      * @returns RetirementProfile
      **********************************************/
-    retrieveRetirementProfile(username) {
+    retrieveRetirementProfile(username, access_token) {
         axios.post(this.apiUrlRoot + '/getRetirementProfile', {
-            username: username
+            username: username,
+            access_token: access_token
         })
         .then((response) => {
             console.log(response);
