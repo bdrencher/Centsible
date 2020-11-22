@@ -4,7 +4,8 @@ module.exports = {
     getUserPasshash: getUserCredentials,
     associateFirstAccessToken: associateFirstAccessToken,
     scrambleToken: scrambleToken,
-    validateAccessToken: validateAccessToken
+    validateAccessToken: validateAccessToken,
+    deleteUser: deleteUser
 }
 
 const { Pool } = require('pg');

@@ -35,7 +35,6 @@ app.post('/validateCredentials', (req, res) => {
 });
 
 app.delete('/deleteUser', (req, res) => {
-    console.log(req.body);
     users.deleteUser(req.body.username, req.body.access_token, res);
 })
 
