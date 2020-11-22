@@ -75,9 +75,6 @@ export class ApiCommunicator {
                 access_token: access_token
             }
         })
-        .then((response) => {
-            console.log(response);
-        })
         .catch((error) => {
             console.log(error);
         });
