@@ -172,7 +172,7 @@ function validateAccessToken(username, callback) {
             console.log(err);
             callback(err, false);
         } else {
-            callback(null, result.rows[0]);
+            callback(null, result);
         }
     });
 }
