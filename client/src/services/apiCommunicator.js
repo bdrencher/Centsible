@@ -41,7 +41,6 @@ export class ApiCommunicator {
      * @returns Boolean indicating success or failure
      **********************************************/
     validateCredentials(username, password) {
-        const history = useHistory();
         axios.post(this.apiUrlRoot + '/validateCredentials', {
             username: username,
             password: password
