@@ -1,5 +1,3 @@
-import { useHistory, usreHistory } from "react-router-dom";
-
 const axios = require('axios').default;
 
 /*****************************************************
@@ -55,7 +53,6 @@ export class ApiCommunicator {
             } else {
                 localStorage.setItem("access_token", response.data.access_token);
                 localStorage.setItem("user", username);
-                history.push("/dashboard");
             }
         })
         .catch((error) => {
