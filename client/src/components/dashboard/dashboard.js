@@ -19,6 +19,11 @@ export class Dashboard extends React.Component {
     this.props.history.push("/accountSettings");
   }
 
+  handleLogout = () => {
+    localStorage.clear();
+    this.props.history.push("/");
+  }
+
   render() {
     return (
       <div className="content">
@@ -29,6 +34,7 @@ export class Dashboard extends React.Component {
           <button onClick={this.goToFinanceEstimator}>Estimate an Investment</button>
           <button onClick={this.goToGoalSetter}>My Finances</button>
           <button onClick={this.goToAccountSettings}>Settings</button>
+          <button onClick={this.handleLogout}>Logout</button>
         </div>
       </div>
     )
