@@ -24,14 +24,8 @@ export class Login extends React.Component {
 
   handleSubmit = (event) => {
     const api = new ApiCommunicator();
-<<<<<<< HEAD
     api.validateCredentials(this.state.username, this.state.password, (result) => {
       if (result) {
-=======
-    api.validateCredentials(this.state.username, this.state.password)
-    .then(() => {
-      if (localStorage.getItem('user') != undefined && localStorage.getItem('access_token') != undefined) {
->>>>>>> 65ae8c2e77f56200da37e272ea173dfbf5d92368
         this.props.history.push("/dashboard");
       }
     });
