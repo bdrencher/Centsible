@@ -3,6 +3,7 @@ module.exports = {
 }
 
 const usersHelper = require("../databaseHelper/usersHelper");
+const bcrypt = require('bcrypt');
 
 /*************************************************
  * @desc confirms that the user is using a valid
