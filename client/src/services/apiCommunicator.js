@@ -48,10 +48,11 @@ export class ApiCommunicator {
         .then((response) => {
             if (!response.data.Success || !response.data.validCredentials) {
                 alert("Invalid credentials, please try again or create an account.");
-                return false;
+                
             } else {
                 localStorage.setItem("sessionToken", response.data.token);
-                return true;
+                localStorage.setItem("user", username);
+                this.props.history.push("/dashboard");
             }
         })
         .catch((error) => {

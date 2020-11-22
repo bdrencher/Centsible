@@ -24,12 +24,7 @@ export class Login extends React.Component {
 
   handleSubmit = (event) => {
     const api = new ApiCommunicator();
-    const result = api.validateCredentials(this.state.username, this.state.password);
-    if (result) {
-      this.props.history.push("/dashboard");
-    } else {
-      alert("Login failed, please try again or create an account.")
-    }
+    api.validateCredentials(this.state.username, this.state.password);
     event.preventDefault();
   }
 
