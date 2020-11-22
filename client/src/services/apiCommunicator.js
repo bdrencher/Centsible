@@ -52,7 +52,10 @@ export class ApiCommunicator {
             } else {
                 localStorage.setItem("access_token", response.data.access_token);
                 localStorage.setItem("user", username);
+<<<<<<< HEAD
                 callback(response.data.Success);
+=======
+>>>>>>> 65ae8c2e77f56200da37e272ea173dfbf5d92368
             }
         })
         .catch((error) => {
