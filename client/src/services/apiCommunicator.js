@@ -68,7 +68,6 @@ export class ApiCommunicator {
      * @returns Boolean indicating success or failure
      **********************************************/
     deleteUser(username, access_token) {
-        console.log(username, access_token);
         axios.delete((this.apiUrlRoot + '/deleteUser'), {
             data: {
                 username: username,
@@ -112,9 +111,11 @@ export class ApiCommunicator {
      **********************************************/
     updateRetirementProfile(username, access_token, profile) {
         axios.put(this.apiUrlRoot + '/updateRetirement', {
-            username: username,
-            access_token: access_token,
-            profile: profile
+            data: {
+                username: username,
+                access_token: access_token,
+                profile: profile
+            }
         })
         .then((response) => {
             console.log(response);
