@@ -40,7 +40,7 @@ export class ApiCommunicator {
      * @string password
      * @returns Boolean indicating success or failure
      **********************************************/
-    validateCredentials(username, password) {
+    validateCredentials(username, password, callback) {
         axios.post(this.apiUrlRoot + '/validateCredentials', {
             username: username,
             password: password
@@ -52,7 +52,7 @@ export class ApiCommunicator {
             } else {
                 localStorage.setItem("access_token", response.data.access_token);
                 localStorage.setItem("user", username);
-                this.props.history.push("/dashboard");
+                callback(response.data.Success);
             }
         })
         .catch((error) => {
