@@ -1,4 +1,3 @@
-var self = this;
 var CACHE_NAME = 'pwa-task-manager';
 var urlsToCache = [
   '/',
@@ -10,6 +9,7 @@ var urlsToCache = [
 ];
 
 // Install a service worker
+/* eslint-disable-next-line no-restricted-globals */
 self.addEventListener('install', event => {
   // Perform install steps
   event.waitUntil(
@@ -22,6 +22,7 @@ self.addEventListener('install', event => {
 });
 
 // Cache and return requests
+/* eslint-disable-next-line no-restricted-globals */
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
@@ -37,6 +38,7 @@ self.addEventListener('fetch', event => {
 });
 
 // Update a service worker
+/* eslint-disable-next-line no-restricted-globals */
 self.addEventListener('activate', event => {
   var cacheWhitelist = ['pwa-task-manager'];
   event.waitUntil(
