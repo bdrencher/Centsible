@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./serviceworker.js').then((registration) => {
+            console.log("worker registration was successful for scope: ", registration.scope);
+          }, (err) => {
+            console.log("worker registration failed", err);
+          }).catch((err) => {
+            console.log("an exception was caught: ", err);
+          });
+        });
+      } else {
+        console.log("This browser does not support service workers");
+      }
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml">
