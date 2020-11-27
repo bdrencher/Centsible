@@ -50,3 +50,24 @@ var checkResponse = (request) => {
     }, reject);
   });
 };
+
+var addToCache = (request) => {
+  return caches.open("offline").then((cache) => {
+    return fetch(request).then((response) => {
+      console.log(response.url + " was cached");
+      return cache.put(request, response);
+    });
+  });
+};
+
+var returnFromCache = (request) => {
+  return caches.open("offline").then((cache) => {
+    return cache.match(request).then((matching) => {
+      if(!matching || matching.status == 404) {
+        return cache.match("offline.html");
+      } else {
+        return matching;
+      }
+    });
+  });
+};
