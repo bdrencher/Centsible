@@ -1,0 +1,19 @@
+{
+    "short_name": "Centsible",
+    "name": "Centsible",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "144x144 64x64 32x32 24x24 16x16"
+        },
+        {
+            "src": "centsibleIcon.png",
+            "sizes": "144x144"
+        }
+    ],
+    "start_url": "/",
+    "display": "fullscreen",
+    "orientation": "any",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}
