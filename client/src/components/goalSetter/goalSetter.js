@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './goalSetter.module.css';
 import { Input } from '@material-ui/core';
+import { ApiCommunicator } from '../../services/apiCommunicator';
+import { RetirementProfile } from '../../models/profile';
 
 export class GoalSetter extends React.Component {
   constructor(props) {
@@ -24,10 +26,11 @@ export class GoalSetter extends React.Component {
   }
 
   handleSubmit = (event) => {
+    const api = new ApiCommunicator();
     this.setState({
       timeStamp: Date.now(),
     });
-
+    api.createRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_key'), )
     event.preventDefault();
   }
 
