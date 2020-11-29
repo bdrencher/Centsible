@@ -7,6 +7,14 @@ import { RetirementProfile } from '../../models/profile';
 export class GoalSetter extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      currentAge: 0,
+      moneyPerYear: 0,
+      retirementAge: 0,
+      currentAssets: 0
+    }
+
     const api = new ApiCommunicator();
     api.retrieveRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), (result) => {
       if (result.Success) {
@@ -15,13 +23,6 @@ export class GoalSetter extends React.Component {
           moneyPerYear: result.profile.retirementGoal,
           retirementAge: result.profile.retirementAge,
           currentAssets: result.profile.currentAssets
-        }
-      } else {
-        this.state = {
-          currentAge: 0,
-          moneyPerYear: 0,
-          retirementAge: 0,
-          currentAssets: 0
         }
       }
     });
