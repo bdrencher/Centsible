@@ -8,8 +8,7 @@ export class GoalSetter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userAge: 0,
-      timeStamp: new Date(),
+      currentAge: 0,
       moneyPerYear: 0,
       retirementAge: 0,
       currentAssets: 0
@@ -27,10 +26,8 @@ export class GoalSetter extends React.Component {
 
   handleSubmit = (event) => {
     const api = new ApiCommunicator();
-    this.setState({
-      timeStamp: Date.now(),
-    });
-    api.createRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_key'), )
+    const profile = new RetirementProfile(this.state.currentAge, this.state.retirementAge, this.state.currentAssets, this.state.moneyPerYear);
+    api.createRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_key'), profile);
     event.preventDefault();
   }
 
@@ -44,7 +41,7 @@ export class GoalSetter extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Your current age:
-            <Input type="number" name="userAge" value={this.state.userAge} onChange={this.handleChange}></Input>
+            <Input type="number" name="currentAge" value={this.state.currentAge} onChange={this.handleChange}></Input>
           </label>
           <label>
             Desired Retirement Age:
