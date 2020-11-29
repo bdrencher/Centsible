@@ -1,7 +1,7 @@
 module.exports = 
 /*********************************
  * RetirementProfile: class
- * @Number userAge
+ * @Number currentAge
  * @Number retirementAge
  * @Number currentAssets
  * @Number retirementGoal
@@ -10,13 +10,13 @@ module.exports =
  * data
  ********************************/
 class RetirementProfile {
-    userAge;
+    currentAge;
     retirementAge;
     currentAssets;
     retirementGoal;
     
     constructor(iUserAge, iRetirementAge, iCurrentAssets, iRetirementGoal) {
-        this.userAge = iUserAge;
+        this.currentAge = iUserAge;
         this.retirementAge = iRetirementAge;
         this.currentAssets = iCurrentAssets;
         this.retirementGoal = iRetirementGoal;
