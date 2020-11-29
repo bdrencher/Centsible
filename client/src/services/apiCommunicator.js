@@ -140,9 +140,9 @@ export class ApiCommunicator {
         .then((response) => {
             if (response.Success) {
                 console.log(response);
-                callback(response.profile);
+                callback(response);
             } else {
-                callback(false);
+                callback(response);
             }
         })
         .catch((error) => {

@@ -9,12 +9,12 @@ export class GoalSetter extends React.Component {
     super(props);
     const api = new ApiCommunicator();
     api.retrieveRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), (result) => {
-      if (result) {
+      if (result.Success) {
         this.state = {
-          currentAge: result.current_age,
-          moneyPerYear: result.retirement_goal,
-          retirementAge: result.retirement_age,
-          currentAssets: result.current_assets
+          currentAge: result.profile.currentAge,
+          moneyPerYear: result.profile.retirementGoal,
+          retirementAge: result.profile.retirementAge,
+          currentAssets: result.profile.currentAssets
         }
       } else {
         this.state = {
