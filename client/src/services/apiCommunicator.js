@@ -132,13 +132,18 @@ export class ApiCommunicator {
      * @string username
      * @returns RetirementProfile
      **********************************************/
-    retrieveRetirementProfile(username, access_token) {
+    retrieveRetirementProfile(username, access_token, callback) {
         axios.post(this.apiUrlRoot + '/getRetirementProfile', {
             username: username,
             access_token: access_token
         })
         .then((response) => {
-            console.log(response);
+            if (response.Success) {
+                console.log(response);
+                callback(response.profile);
+            } else {
+                callback(false);
+            }
         })
         .catch((error) => {
             console.log(error);

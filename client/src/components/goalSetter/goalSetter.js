@@ -7,12 +7,24 @@ import { RetirementProfile } from '../../models/profile';
 export class GoalSetter extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      currentAge: 0,
-      moneyPerYear: 0,
-      retirementAge: 0,
-      currentAssets: 0
-    }
+    const api = new ApiCommunicator();
+    api.retrieveRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), (result) => {
+      if (result) {
+        this.state = {
+          currentAge: result.current_age,
+          moneyPerYear: result.retirement_goal,
+          retirementAge: result.retirement_age,
+          currentAssets: result.current_assets
+        }
+      } else {
+        this.state = {
+          currentAge: 0,
+          moneyPerYear: 0,
+          retirementAge: 0,
+          currentAssets: 0
+        }
+      }
+    });
   }
 
   handleChange = (event) => {
@@ -25,9 +37,9 @@ export class GoalSetter extends React.Component {
   }
 
   handleSubmit = (event) => {
-    const api = new ApiCommunicator();
+    const submitApi = new ApiCommunicator();
     const profile = new RetirementProfile(this.state.currentAge, this.state.retirementAge, this.state.currentAssets, this.state.moneyPerYear);
-    api.createRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), profile);
+    submitApi.createRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), profile);
     event.preventDefault();
   }
 
@@ -36,7 +48,7 @@ export class GoalSetter extends React.Component {
       <div className="goalSetter">
         <h3>Goals</h3>
         <p>
-          Please enter the following information about set your new financial goal.
+          Please fill out this form to set your financial goal
         </p>
         <form onSubmit={this.handleSubmit}>
           <label>
