@@ -27,7 +27,7 @@ export class GoalSetter extends React.Component {
   handleSubmit = (event) => {
     const api = new ApiCommunicator();
     const profile = new RetirementProfile(this.state.currentAge, this.state.retirementAge, this.state.currentAssets, this.state.moneyPerYear);
-    api.createRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_key'), profile);
+    api.createRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), profile);
     event.preventDefault();
   }
 
