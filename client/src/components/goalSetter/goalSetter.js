@@ -17,13 +17,13 @@ export class GoalSetter extends React.Component {
 
     const api = new ApiCommunicator();
     api.retrieveRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), (result) => {
-      console.log(result);
-      if (result) {
+      let data = result.data;
+      if (data.Success) {
         this.setState({
-          currentAge: result.currentAge,
-          moneyPerYear: result.retirementGoal,
-          retirementAge: result.retirementAge,
-          currentAssets: result.currentAssets
+          currentAge: data.profile.currentAge,
+          moneyPerYear: data.profile.retirementGoal,
+          retirementAge: data.profile.retirementAge,
+          currentAssets: data.profile.currentAssets
         })
       }
     });
