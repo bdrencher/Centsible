@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './login.module.css';
 import { ApiCommunicator } from '../../services/apiCommunicator';
 import { Input } from '@material-ui/core';
-import { Grid } from '@material-ui/core/Grid';
+import { Container, Button } from 'react-bootstrap';
 
 export class Login extends React.Component {
   constructor(props) {
@@ -44,29 +44,21 @@ export class Login extends React.Component {
           <h1>Centsible</h1>
         </div>
         <div>
-          <Grid container spacing={3}>
+          <Container>
             <form>
-              <Grid item xs={8}>
-                <label>Username
-                  <Input type="text" name="username" onChange={this.handleChange}></Input>
-                </label>
-              </Grid>
-              <Grid item xs={8}>
-                <label>Password
-                  <Input type="password" name="password" onChange={this.handleChange}></Input>
-                </label>
-              </Grid>
-              <Grid item xs={4}>
-                <button onClick={this.handleSubmit}>Login</button>
-              </Grid>
+              <label>Username
+                <Input type="text" name="username" onChange={this.handleChange}></Input>
+              </label>
+              <label>Password
+                <Input type="password" name="password" onChange={this.handleChange}></Input>
+              </label>
+              <Button onClick={this.handleSubmit}>Login</Button>
             </form>
-            <Grid item xs={4}>
-              <div>
-                <button onClick={this.handleClick}>Create Account</button>
-              </div>
-            </Grid>
-          </Grid>
-          </div>
+            <div>
+              <Button onClick={this.handleClick}>Create Account</Button>
+            </div>
+          </Container>
+        </div>
       </div>
     )
   }
