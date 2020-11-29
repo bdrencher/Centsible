@@ -1,4 +1,3 @@
-module.exports = 
 /*********************************
  * RetirementProfile: class
  * @Number currentAge
@@ -9,7 +8,7 @@ module.exports =
  * Used to store a users retirement
  * data
  ********************************/
-class RetirementProfile {
+export class RetirementProfile {
     currentAge;
     retirementAge;
     currentAssets;
