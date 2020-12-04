@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './goalProgress.module.css';
-import { BarChart } from 'recharts';
+import { BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 
 export default class GoalProgress extends React.Component {
   constructor(props) {
