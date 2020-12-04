@@ -7,7 +7,7 @@ export class Dashboard extends React.Component {
   }
 
   goToFinanceEstimator = () => {
-    this.props.history.push("/financeEstimator");
+    this.props.history.push("/investmentEstimator");
   }
 
   goToGoalSetter = () => {

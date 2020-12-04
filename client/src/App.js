@@ -17,7 +17,7 @@ function App() {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/accountSettings" component={AccountSettings} />
         <Route exact path="/myFinances" component={GoalSetter} />
-        <Route exact path="/financeEstimator" component={FinanceEstimator} />
+        <Route exact path="/investmentEstimator" component={FinanceEstimator} />
       </Switch>
     </main>
   );

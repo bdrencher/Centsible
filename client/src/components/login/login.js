@@ -37,6 +37,10 @@ export class Login extends React.Component {
     this.props.history.push("/createAccount");
   }
 
+  handleGuest = () => {
+    this.props.history.push("/investmentEstimator")
+  }
+
   render () {
     return (
       <div className="content">
@@ -61,6 +65,9 @@ export class Login extends React.Component {
           </form>
           <div>
             <Button onClick={this.handleClick}>Create Account</Button>
+          </div>
+          <div>
+            <Button onClick={this.handleGuest}>Continue as Guest</Button>
           </div>
         </Container>
       </div>
