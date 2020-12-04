@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './goalProgress.module.css';
 
-export class GoalProgress extends React.Component {
+export default class GoalProgress extends React.Component {
   constructor(props) {
     super(props);
   }

@@ -5,7 +5,7 @@ import { ApiCommunicator } from '../../services/apiCommunicator';
 import { RetirementProfile } from '../../models/profile';
 import GoalProgress from '../goalProgress/goalProgress';
 
-export default class GoalSetter extends React.Component {
+export class GoalSetter extends React.Component {
   constructor(props) {
     super(props);
 
