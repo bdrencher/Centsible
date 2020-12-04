@@ -3,6 +3,7 @@ import styles from './goalSetter.module.css';
 import { Input } from '@material-ui/core';
 import { ApiCommunicator } from '../../services/apiCommunicator';
 import { RetirementProfile } from '../../models/profile';
+import GoalProgress from '../goalProgress';
 
 export class GoalSetter extends React.Component {
   constructor(props) {
@@ -48,29 +49,35 @@ export class GoalSetter extends React.Component {
   render() {
     return (
       <div className="goalSetter">
-        <h3>Goals</h3>
-        <p>
-          Please fill out this form to set your financial goal
-        </p>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Your current age:
-            <Input type="number" name="currentAge" value={this.state.currentAge} onChange={this.handleChange}></Input>
-          </label>
-          <label>
-            Desired Retirement Age:
-            <Input type="number" name="retirementAge" value={this.state.retirementAge} onChange={this.handleChange}></Input>
-          </label>
-          <label>
-            Current assets:
-            <Input type="number" name="currentAssets" value={this.state.currentAssets} onChange={this.handleChange}></Input>
-          </label>
-          <label>
-            Desired funds per year during retirement:
-            <Input type="number" name="moneyPerYear" value={this.state.moneyPerYear} onChange={this.handleChange}></Input>
-          </label>
-          <button type="submit" value="Submit">Save goals</button>
-        </form>
+        <div>
+          <h3>Goals</h3>
+          <p>
+            Please fill out this form to set your financial goal
+          </p>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Your current age:
+              <Input type="number" name="currentAge" value={this.state.currentAge} onChange={this.handleChange}></Input>
+            </label>
+            <label>
+              Desired Retirement Age:
+              <Input type="number" name="retirementAge" value={this.state.retirementAge} onChange={this.handleChange}></Input>
+            </label>
+            <label>
+              Current assets:
+              <Input type="number" name="currentAssets" value={this.state.currentAssets} onChange={this.handleChange}></Input>
+            </label>
+            <label>
+              Desired funds per year during retirement:
+              <Input type="number" name="moneyPerYear" value={this.state.moneyPerYear} onChange={this.handleChange}></Input>
+            </label>
+            <button type="submit" value="Submit">Save goals</button>
+          </form>
+        </div>
+        <div>
+          <h3>Tracking your progress</h3>
+          <GoalProgress></GoalProgress>
+        </div>
       </div>
     )
   }
