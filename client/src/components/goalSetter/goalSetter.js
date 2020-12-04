@@ -6,7 +6,7 @@ import { RetirementProfile } from '../../models/profile';
 import { BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 
 export class GoalSetter extends React.Component {
-  data = [{ name: "My Progress", Assets: 0, Goal: 0}]
+  data = [{ name: "My Progress"}]
 
   constructor(props) {
     super(props);
