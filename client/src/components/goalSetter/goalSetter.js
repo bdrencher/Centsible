@@ -76,7 +76,7 @@ export class GoalSetter extends React.Component {
         </div>
         <div>
           <h3>Tracking your progress</h3>
-          <GoalProgress data="[{ name: 'My Progress', Assets: {this.state.currentAssets}, Goal: {this.state.moneyPerYear}}]"></GoalProgress>
+          <GoalProgress></GoalProgress>
         </div>
       </div>
     )

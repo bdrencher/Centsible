@@ -4,6 +4,8 @@ import styles from './goalProgress.module.css';
 import { BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 
 export default class GoalProgress extends React.Component {
+  data = [{ name: "My Progress", Assets: 4000, Goal: 100000}]
+
   constructor(props) {
     console.log(this.props);
     super(props);
@@ -12,7 +14,7 @@ export default class GoalProgress extends React.Component {
   render() {
     return (
       <div className="goalProgressChart">
-        <BarChart width={250} height={250} data={this.props.data}>
+        <BarChart width={250} height={250}>
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
