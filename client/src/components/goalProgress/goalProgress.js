@@ -13,7 +13,7 @@ export default class GoalProgress extends React.Component {
   render() {
     return (
       <div className="goalProgressChart">
-        <BarChart width={250} height={250}>
+        <BarChart width={250} height={250} data={this.data}>
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
