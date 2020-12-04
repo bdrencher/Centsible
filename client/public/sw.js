@@ -1,7 +1,9 @@
 const CACHE_NAME = "offline";
 const urlsToCache = [
+    '/index.html',
     '/',
-    '/dashboard',
+    '../src/components/accountSettings.js',
+    '../src/components/accountSettings.css',
     '/createAccount',
     '/myFinances',
     '/financeEstimator',
