@@ -16,7 +16,7 @@ export default class GoalProgress extends React.Component {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="Current Assets" fill="#FCA311" />
+          <Bar dataKey="Assets" fill="#FCA311" />
           <Bar dataKey="Goal" fill="#14213D" />
         </BarChart>
       </div>
