@@ -3,7 +3,7 @@ import styles from './goalSetter.module.css';
 import { Input } from '@material-ui/core';
 import { ApiCommunicator } from '../../services/apiCommunicator';
 import { RetirementProfile } from '../../models/profile';
-import GoalProgress from '../goalProgress';
+import GoalProgress from '../goalProgress/goalProgress';
 
 export class GoalSetter extends React.Component {
   constructor(props) {
