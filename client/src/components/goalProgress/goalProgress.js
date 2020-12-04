@@ -13,9 +13,9 @@ export default class GoalProgress extends React.Component {
     const api = new ApiCommunicator();
     api.retrieveRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), (result) => {
       if (result) {
-        data[0].name = "My Progress";
-        data[0].Goal = result.retirementGoal,
-        data[0].Assets = result.currentAssets
+        this.data[0].name = "My Progress";
+        this.data[0].Goal = result.retirementGoal,
+        this.data[0].Assets = result.currentAssets
       }
     });
   }
