@@ -3,11 +3,9 @@ import styles from './goalSetter.module.css';
 import { Input } from '@material-ui/core';
 import { ApiCommunicator } from '../../services/apiCommunicator';
 import { RetirementProfile } from '../../models/profile';
-import { BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
+import GoalProgress from '../goalProgress/goalProgress';
 
 export class GoalSetter extends React.Component {
-  data = [{ name: "My Progress"}]
-
   constructor(props) {
     super(props);
 
@@ -27,8 +25,6 @@ export class GoalSetter extends React.Component {
           retirementAge: result.retirementAge,
           currentAssets: result.currentAssets
         });
-        this.data[0].Goal = result.retirementGoal;
-        this.data[0].Assets = result.currentAssets;
       }
     });
   }
@@ -37,11 +33,6 @@ export class GoalSetter extends React.Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    if (name == "currentAssets") {
-      this.data[0].Assets = value;
-    } else if (name == "fundGoal") {
-      this.data[0].Goal = value;
-    }
     this.setState({
       [name]: value,
     });
@@ -84,16 +75,7 @@ export class GoalSetter extends React.Component {
         </div>
         <div>
           <h3>Tracking your progress</h3>
-          <div className="goalProgressChart">
-            <BarChart width={250} height={250} data={this.data}>
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="Assets" fill="#FCA311" />
-              <Bar dataKey="Goal" fill="#14213D" />
-            </BarChart>
-          </div>
+          <GoalProgress></GoalProgress>
         </div>
       </div>
     )
