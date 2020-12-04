@@ -138,11 +138,10 @@ export class ApiCommunicator {
             access_token: access_token
         })
         .then((response) => {
-            if (response.Success) {
-                console.log(response);
-                callback(response);
+            if (response.data.Success) {
+                callback(response.data.profile);
             } else {
-                callback(response);
+                callback(false);
             }
         })
         .catch((error) => {

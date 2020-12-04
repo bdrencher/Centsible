@@ -43,15 +43,15 @@ export class Login extends React.Component {
         <div className="header">
           <h1>Centsible</h1>
         </div>
-        <Container>
+        <Container className="login">
           <form>
             <Row>
-              <Col xs>
+              <Col>
                 <label>Username
                   <Input type="text" name="username" onChange={this.handleChange}></Input>
                 </label>
               </Col>
-              <Col xs>
+              <Col>
                 <label>Password
                   <Input type="password" name="password" onChange={this.handleChange}></Input>
                 </label>
