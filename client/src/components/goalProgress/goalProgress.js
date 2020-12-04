@@ -7,7 +7,6 @@ export default class GoalProgress extends React.Component {
   data = [{ name: "My Progress", Assets: 4000, Goal: 100000}]
 
   constructor(props) {
-    console.log(this.props);
     super(props);
   }
 
