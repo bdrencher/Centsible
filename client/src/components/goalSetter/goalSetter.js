@@ -3,11 +3,10 @@ import styles from './goalSetter.module.css';
 import { Input } from '@material-ui/core';
 import { ApiCommunicator } from '../../services/apiCommunicator';
 import { RetirementProfile } from '../../models/profile';
-import GoalProgress from '../goalProgress/goalProgress';
+import { BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 
 export class GoalSetter extends React.Component {
-  assetsValue = 0;
-  goalValue = 0;
+  data = [{ name: "My Progress", Assets: 0, Goal: 0}]
 
   constructor(props) {
     super(props);
@@ -21,7 +20,6 @@ export class GoalSetter extends React.Component {
 
     const api = new ApiCommunicator();
     api.retrieveRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), (result) => {
-      console.log(result.currentAge);
       if (result) {
         this.setState({
           currentAge: result.currentAge,
@@ -29,8 +27,8 @@ export class GoalSetter extends React.Component {
           retirementAge: result.retirementAge,
           currentAssets: result.currentAssets
         });
-        this.goalValue = result.retirementGoal;
-        this.assetsValue = result.currentAssets;
+        this.data[0].Goal = result.retirementGoal;
+        this.data[0].Assets = result.currentAssets;
       }
     });
   }
@@ -40,9 +38,9 @@ export class GoalSetter extends React.Component {
     const value = target.value;
     const name = target.name;
     if (name == "currentAssets") {
-      this.assetsValue = value;
+      this.data[0].Assets = value;
     } else if (name == "fundGoal") {
-      this.goalValue = value;
+      this.data[0].Goal = value;
     }
     this.setState({
       [name]: value,
@@ -86,7 +84,16 @@ export class GoalSetter extends React.Component {
         </div>
         <div>
           <h3>Tracking your progress</h3>
-          <GoalProgress assetsValue={this.assetsValue} goalValue={this.goalValue}></GoalProgress>
+          <div className="goalProgressChart">
+            <BarChart width={250} height={250} data={this.data}>
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="Assets" fill="#FCA311" />
+              <Bar dataKey="Goal" fill="#14213D" />
+            </BarChart>
+          </div>
         </div>
       </div>
     )
