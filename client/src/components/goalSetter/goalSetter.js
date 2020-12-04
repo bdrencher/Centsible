@@ -14,7 +14,7 @@ export class GoalSetter extends React.Component {
 
     this.state = {
       currentAge: 0,
-      moneyPerYear: 0,
+      fundGoal: 0,
       retirementAge: 0,
       currentAssets: 0
     }
@@ -25,7 +25,7 @@ export class GoalSetter extends React.Component {
       if (result) {
         this.setState({
           currentAge: result.currentAge,
-          moneyPerYear: result.retirementGoal,
+          fundGoal: result.retirementGoal,
           retirementAge: result.retirementAge,
           currentAssets: result.currentAssets
         });
@@ -39,6 +39,11 @@ export class GoalSetter extends React.Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
+    if (name == "currentAssets") {
+      this.assetsValue = value;
+    } else if (name == "fundGoal") {
+      this.goalValue = value;
+    }
     this.setState({
       [name]: value,
     });
@@ -46,7 +51,7 @@ export class GoalSetter extends React.Component {
 
   handleSubmit = (event) => {
     const submitApi = new ApiCommunicator();
-    const profile = new RetirementProfile(this.state.currentAge, this.state.retirementAge, this.state.currentAssets, this.state.moneyPerYear);
+    const profile = new RetirementProfile(this.state.currentAge, this.state.retirementAge, this.state.currentAssets, this.state.fundGoal);
     submitApi.createRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), profile);
     event.preventDefault();
   }
@@ -73,8 +78,8 @@ export class GoalSetter extends React.Component {
               <Input type="number" name="currentAssets" value={this.state.currentAssets} onChange={this.handleChange}></Input>
             </label>
             <label>
-              Desired funds per year during retirement:
-              <Input type="number" name="moneyPerYear" value={this.state.moneyPerYear} onChange={this.handleChange}></Input>
+              Retirement fund goal:
+              <Input type="number" name="fundGoal" value={this.state.fundGoal} onChange={this.handleChange}></Input>
             </label>
             <button type="submit" value="Submit">Save goals</button>
           </form>
