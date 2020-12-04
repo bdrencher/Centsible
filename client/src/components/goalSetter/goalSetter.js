@@ -6,6 +6,9 @@ import { RetirementProfile } from '../../models/profile';
 import GoalProgress from '../goalProgress/goalProgress';
 
 export class GoalSetter extends React.Component {
+  assetsValue = 0;
+  goalValue = 0;
+
   constructor(props) {
     super(props);
 
@@ -19,13 +22,15 @@ export class GoalSetter extends React.Component {
     const api = new ApiCommunicator();
     api.retrieveRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), (result) => {
       console.log(result.currentAge);
-      if (data.Success) {
+      if (result) {
         this.setState({
           currentAge: result.currentAge,
           moneyPerYear: result.retirementGoal,
           retirementAge: result.retirementAge,
           currentAssets: result.currentAssets
-        })
+        });
+        this.goalValue = result.retirementGoal;
+        this.assetsValue = result.currentAssets;
       }
     });
   }
@@ -76,7 +81,7 @@ export class GoalSetter extends React.Component {
         </div>
         <div>
           <h3>Tracking your progress</h3>
-          <GoalProgress></GoalProgress>
+          <GoalProgress assetsValue={this.assetsValue} goalValue={this.goalValue}></GoalProgress>
         </div>
       </div>
     )

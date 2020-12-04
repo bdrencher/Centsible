@@ -4,7 +4,7 @@ import styles from './goalProgress.module.css';
 import { BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 
 export default class GoalProgress extends React.Component {
-  data = [{ name: "My Progress", Assets: 4000, Goal: 100000}]
+  data = [{ name: "My Progress", Assets: this.props.assetsValue, Goal: this.props.goalValue}]
 
   constructor(props) {
     super(props);
