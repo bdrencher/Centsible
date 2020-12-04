@@ -5,6 +5,7 @@ import { BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 
 export default class GoalProgress extends React.Component {
   constructor(props) {
+    console.log(this.props);
     super(props);
   }
 
