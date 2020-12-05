@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './FinanceEstimator.module.css';
 import calculationHelper from '../../services/calculationHelper';
-import { Input } from '@material-ui/core';
+import { Input, Checkbox, Select } from '@material-ui/core';
 import { Container, Button, Row, Col } from 'react-bootstrap';
 
 export class FinanceEstimator extends React.Component {
@@ -64,11 +64,11 @@ export class FinanceEstimator extends React.Component {
                 <Col>
                   <label>
                     Index fund:
-                    <select name="fund" value={this.state.fund} onChange={this.handleChange}>
+                    <Select name="fund" value={this.state.fund} onChange={this.handleChange}>
                       <option value="0">S&P500</option>
                       <option value="1">NASDAQ</option>
                       <option value="2">Russell 1000</option>
-                    </select>
+                    </Select>
                   </label>
                 </Col>
               </Row>
@@ -76,13 +76,13 @@ export class FinanceEstimator extends React.Component {
                 <Col>
                   <label>
                     Account for inflation?
-                    <Input name="inflation" type="checkbox" value={this.state.inflation} onChange={this.handleChange}></Input>
+                    <Checkbox name="inflation" type="checkbox" value={this.state.inflation} onChange={this.handleChange}></Checkbox>
                   </label>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <Input type="submit" value="Submit"></Input>
+                  <Button type="submit" value="Submit"></Button>
                 </Col>
               </Row>
             </Container>
