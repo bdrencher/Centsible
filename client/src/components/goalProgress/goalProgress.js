@@ -5,7 +5,7 @@ import { BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 import { ApiCommunicator } from '../../services/apiCommunicator';
 
 export default class GoalProgress extends React.Component {
-  data;
+  data = [{ name: "", Goal: 0, Assets: 0 }]
 
   constructor(props) {
     super(props);
