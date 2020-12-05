@@ -70,7 +70,7 @@ export class Login extends React.Component {
             </Row>
           </form>
         </Container>
-        <Container className="otherOptions">
+        <Container className={styles.otherOptions}>
           <Row>
             <Col>
             Don't have an account?
