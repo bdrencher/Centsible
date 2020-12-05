@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './accountSettings.module.css';
+import { Container, Row, Col } from 'react-bootstrap';
 import  { ApiCommunicator } from '../../services/apiCommunicator';
 
 export class AccountSettings extends React.Component {
@@ -22,9 +23,20 @@ export class AccountSettings extends React.Component {
     return (
       <div class="content">
         <div>
-          <button onClick={this.handleDelete}>Delete my account</button>
-          <button onClick={this.handleReturnToDashboard}>Return to dashboard</button>
+          <h3>Settings</h3>
         </div>
+        <Container>
+          <Row>
+            <Col>
+              <button onClick={this.handleDelete}>Delete my account</button>
+            </Col>
+          </Row>
+          <Row className={styles.topSpace}>
+            <Col>
+              <button onClick={this.handleReturnToDashboard}>Return to dashboard</button>
+            </Col>
+          </Row>
+        </Container>
       </div>
     )
   }
