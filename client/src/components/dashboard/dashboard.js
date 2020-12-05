@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './dashboard.module.css';
+import { Container, Button, Row, Col } from 'react-bootstrap';
 
 export class Dashboard extends React.Component {
   constructor(props) {
@@ -30,10 +31,28 @@ export class Dashboard extends React.Component {
           <h1>Dashboard</h1>
         </div>
         <div>
-          <button onClick={this.goToFinanceEstimator}>Estimate an Investment</button>
-          <button onClick={this.goToGoalSetter}>My Finances</button>
-          <button onClick={this.goToAccountSettings}>Settings</button>
-          <button onClick={this.handleLogout}>Logout</button>
+          <Container>
+            <Row>
+              <Col>
+                <Button onClick={this.goToFinanceEstimator}>Estimate an Investment</Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+               <Button onClick={this.goToGoalSetter}>My Finances</Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Button onClick={this.goToAccountSettings}>Settings</Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Button onClick={this.handleLogout}>Logout</Button>
+              </Col>
+            </Row>
+          </Container>
         </div>
       </div>
     )
