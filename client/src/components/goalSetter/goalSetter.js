@@ -43,6 +43,7 @@ export class GoalSetter extends React.Component {
     const submitApi = new ApiCommunicator();
     const profile = new RetirementProfile(this.state.currentAge, this.state.retirementAge, this.state.currentAssets, this.state.fundGoal);
     submitApi.createRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), profile);
+    alert("Your retirement goals have been saved")
     event.preventDefault();
   }
 
