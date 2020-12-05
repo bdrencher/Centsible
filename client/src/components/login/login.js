@@ -82,9 +82,7 @@ export class Login extends React.Component {
                 <Button onClick={this.handleClick}>Create an account</Button>
               </div>
             </Col>
-            <Col xs={1}>
-            Or
-            </Col>
+            <Col xs={1}>or</Col>
             <Col>
               <div>
                 <Button onClick={this.handleGuest}>Continue as guest</Button>
