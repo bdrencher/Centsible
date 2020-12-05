@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './FinanceEstimator.module.css';
 import calculationHelper from '../../services/calculationHelper';
+import { Input } from '@material-ui/core';
+import { Container, Button, Row, Col } from 'react-bootstrap';
 
 export class FinanceEstimator extends React.Component {
   constructor(props) {
@@ -37,28 +39,53 @@ export class FinanceEstimator extends React.Component {
     return (
       <div>
         <div>
+          <h2>Estimate investment value</h2>
+        </div>
+        <div>
           <form onSubmit={this.handleSubmit}>
-            <label>
-              Value in today's dollars:
-              <input type="number" name="currentDollars" value={this.state.currentDollars} onChange={this.handleChange}></input>
-            </label>
-            <label>
-              Years to maturity:
-              <input type="number" name="years" value={this.state.years} onChange={this.handleChange}></input>
-            </label>
-            <label>
-              Index fund:
-              <select name="fund" value={this.state.fund} onChange={this.handleChange}>
-                <option value="0">S&P500</option>
-                <option value="1">NASDAQ</option>
-                <option value="2">Russell 1000</option>
-              </select>
-            </label>
-            <label>
-              Account for inflation?
-              <input name="inflation" type="checkbox" value={this.state.inflation} onChange={this.handleChange}></input>
-            </label>
-            <input type="submit" value="Submit"></input>
+            <Container>
+              <Row>
+                <Col>
+                  <label>
+                    Value in today's dollars:
+                    <Input type="number" name="currentDollars" value={this.state.currentDollars} onChange={this.handleChange}></Input>
+                  </label>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <label>
+                    Years to maturity:
+                    <Input type="number" name="years" value={this.state.years} onChange={this.handleChange}></Input>
+                  </label>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <label>
+                    Index fund:
+                    <select name="fund" value={this.state.fund} onChange={this.handleChange}>
+                      <option value="0">S&P500</option>
+                      <option value="1">NASDAQ</option>
+                      <option value="2">Russell 1000</option>
+                    </select>
+                  </label>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <label>
+                    Account for inflation?
+                    <Input name="inflation" type="checkbox" value={this.state.inflation} onChange={this.handleChange}></Input>
+                  </label>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Input type="submit" value="Submit"></Input>
+                </Col>
+              </Row>
+            </Container>
           </form>
           </div>
           <div>
