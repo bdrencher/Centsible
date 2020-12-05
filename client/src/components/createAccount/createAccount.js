@@ -43,9 +43,9 @@ export class CreateAccount extends React.Component {
   render() {
     return (
       <div className="content">
-        <h2>
+        <h3>
           Create an account
-        </h2>
+        </h3>
         <form onSubmit={this.handleSubmit}>
           <Container>
             <Row>
