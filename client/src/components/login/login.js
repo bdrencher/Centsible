@@ -50,21 +50,21 @@ export class Login extends React.Component {
         <Container className="login">
           <form>
             <Row>
-              <Col>
+              <Col xs={12}>
                 <label>Username
                   <Input type="text" name="username" onChange={this.handleChange}></Input>
                 </label>
               </Col>
             </Row>
             <Row>
-              <Col>
+              <Col xs={12}>
                 <label>Password
                   <Input type="password" name="password" onChange={this.handleChange}></Input>
                 </label>
               </Col> 
             </Row>
             <Row>
-              <Col>
+              <Col xs={12}>
                 <Button onClick={this.handleSubmit}>Login</Button>
               </Col>
             </Row>
