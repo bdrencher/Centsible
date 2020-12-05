@@ -89,7 +89,7 @@ export class FinanceEstimator extends React.Component {
           </form>
           </div>
           <div>
-            <p>
+            <p className={styles.valueOutput}>
               Future value of your investment: ${this.state.futureDollars}
             </p>
           </div>
