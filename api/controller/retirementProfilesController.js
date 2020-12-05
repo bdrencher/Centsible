@@ -23,7 +23,14 @@ function createRetirementProfile(username, hashedToken, profile, res) {
         } else if (result) {
             retirementProfilesHelper.enterRetirementData(username, profile, (err, result) => {
                 if (err) {
-                    res.status(500).json({ Success: false });
+                    retirementProfilesHelper.updateRetirementData(username, profile, (err, result) => { // update if the user already exists
+                        if (err) {
+                            console.log(err);
+                            res.status(500).json({ Success: false });
+                        } else {
+                            res.status(200).json({ Success: true });
+                        }
+                    })
                 } else {
                     res.status(200).json({ Success: true });
                 }
