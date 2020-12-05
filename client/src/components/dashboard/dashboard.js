@@ -28,27 +28,27 @@ export class Dashboard extends React.Component {
     return (
       <div className="content">
         <div className="header">
-          <h1>Dashboard</h1>
+          <h3>Dashboard</h3>
         </div>
         <div>
           <Container>
             <Row>
-              <Col>
+              <Col xs={6}>
                 <Button onClick={this.goToFinanceEstimator}>Estimate an Investment</Button>
               </Col>
             </Row>
-            <Row>
-              <Col>
+            <Row className={styles.secondaryButton}>
+              <Col xs={6}>
                <Button onClick={this.goToGoalSetter}>My Finances</Button>
               </Col>
             </Row>
-            <Row>
-              <Col>
+            <Row className={styles.secondaryButton}>
+              <Col xs={6}>
                 <Button onClick={this.goToAccountSettings}>Settings</Button>
               </Col>
             </Row>
-            <Row>
-              <Col>
+            <Row className={styles.secondaryButton}>
+              <Col xs={6}>
                 <Button onClick={this.handleLogout}>Logout</Button>
               </Col>
             </Row>
