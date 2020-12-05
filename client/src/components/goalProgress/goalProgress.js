@@ -40,9 +40,11 @@ export default class GoalProgress extends React.Component {
           chart: {
             title: "Progress Chart"
           },
-          yAxis: {
-            title: "Dollars ($)",
-            minValue: 0
+          axes: {
+            y: {
+              title: "Dollars ($)",
+              minValue: 0
+            }
           }
         }}
         />
