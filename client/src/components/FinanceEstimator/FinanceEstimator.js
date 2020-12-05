@@ -90,7 +90,7 @@ export class FinanceEstimator extends React.Component {
           </div>
           <div>
             <p>
-              Future value of your investment: {this.state.futureDollars}
+              Future value of your investment: ${this.state.futureDollars}
             </p>
           </div>
       </div>
