@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './goalProgress.module.css';
 import Chart from "react-google-charts";
-// import { ApiCommunicator } from '../../services/apiCommunicator';
+import { ApiCommunicator } from '../../services/apiCommunicator';
 
 export default class GoalProgress extends React.Component {
   data = { name: "", Goal: 0, Assets: 0 };
