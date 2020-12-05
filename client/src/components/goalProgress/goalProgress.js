@@ -37,8 +37,10 @@ export default class GoalProgress extends React.Component {
           [this.name, this.assets, this.goal]
         ]}
         options={{
-          title: "Progress Chart",
-          hAxis: {
+          chart: {
+            title: "Progress Chart"
+          },
+          yAxis: {
             title: "Dollars ($)",
             minValue: 0
           }
