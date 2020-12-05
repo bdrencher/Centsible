@@ -5,9 +5,9 @@ import Chart from "react-google-charts";
 import { ApiCommunicator } from '../../services/apiCommunicator';
 
 export default class GoalProgress extends React.Component {
-  name = "";
-  goal = 10;
-  assets = 5;
+  name;
+  goal;
+  assets;
 
 
   constructor(props) {
@@ -19,6 +19,7 @@ export default class GoalProgress extends React.Component {
         this.name = "My Progress";
         this.goal = result.retirementGoal;
         this.assets = result.currentAssets;
+        this.forceUpdate();
       }
     });
   }
