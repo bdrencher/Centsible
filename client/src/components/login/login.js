@@ -55,20 +55,36 @@ export class Login extends React.Component {
                   <Input type="text" name="username" onChange={this.handleChange}></Input>
                 </label>
               </Col>
+            </Row>
+            <Row>
               <Col>
                 <label>Password
                   <Input type="password" name="password" onChange={this.handleChange}></Input>
                 </label>
               </Col> 
             </Row>
-            <Button onClick={this.handleSubmit}>Login</Button>
+            <Row>
+              <Col>
+                <Button onClick={this.handleSubmit}>Login</Button>
+              </Col>
+            </Row>
           </form>
-          <div>
-            <Button onClick={this.handleClick}>Create Account</Button>
-          </div>
-          <div>
-            <Button onClick={this.handleGuest}>Continue as Guest</Button>
-          </div>
+        </Container>
+        <Container>
+          <Row>
+            <Col>
+              <div>
+                <Button onClick={this.handleClick}>Create Account</Button>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <div>
+                <Button onClick={this.handleGuest}>Continue as Guest</Button>
+              </div>
+            </Col>
+          </Row>
         </Container>
       </div>
     )
