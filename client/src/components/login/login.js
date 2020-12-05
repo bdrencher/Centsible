@@ -47,7 +47,7 @@ export class Login extends React.Component {
         <div className="header">
           <h1>Centsible</h1>
         </div>
-        <Container className="login">
+        <Container>
           <form>
             <Row>
               <Col xs={12}>
@@ -70,22 +70,26 @@ export class Login extends React.Component {
             </Row>
           </form>
         </Container>
-        <Container>
+        <Container className="otherOptions">
           <Row>
             <Col>
             Don't have an account?
             </Col>
           </Row>
           <Row>
-            <Col xs={5}>
+            <Col xs={12}>
               <div>
                 <Button onClick={this.handleClick}>Create Account</Button>
               </div>
             </Col>
+          </Row>
+          <Row>
             <Col>
             Or
             </Col>
-            <Col xs={5}>
+          </Row>
+          <Row>
+            <Col xs={12}>
               <div>
                 <Button onClick={this.handleGuest}>Continue as Guest</Button>
               </div>
