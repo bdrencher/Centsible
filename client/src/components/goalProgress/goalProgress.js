@@ -16,6 +16,7 @@ export default class GoalProgress extends React.Component {
         this.data[0].name = "My Progress";
         this.data[0].Goal = result.retirementGoal;
         this.data[0].Assets = result.currentAssets;
+        this.forceUpdate();
       }
     });
   }
