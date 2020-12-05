@@ -24,6 +24,7 @@ export default class GoalProgress extends React.Component {
         this.name="No goal set";
         this.goal = 0;
         this.assets = 0;
+        this.forceUpdate();
       }
     });
   }
