@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './createAccount.module.css';
 import { ApiCommunicator } from '../../services/apiCommunicator';
 import { Input } from '@material-ui/core';
+import { Container, Button, Row, Col } from 'react-bootstrap';
 
 export class CreateAccount extends React.Component {
   apiCommunicator = new ApiCommunicator();
@@ -42,22 +43,49 @@ export class CreateAccount extends React.Component {
   render() {
     return (
       <div className="content">
+        <h1>
+          Create an account
+        </h1>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Username:
-            <Input type="text" name="username" onChange={this.handleChange}></Input>
-          </label>
-          <label>
-            Password:
-            <Input type="password" name="password" onChange={this.handleChange}></Input>
-          </label>
-          <label>
-            Confirm Password:
-            <Input type="password" name="confirmPassword" onChange={this.handleChange}></Input>
-          </label>
-          <button type="submit">Submit</button>
+          <Container>
+            <Row>
+              <Col xs={12}>
+                <label>
+                  Username:
+                  <Input type="text" name="username" onChange={this.handleChange}></Input>
+                </label>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12}>
+                <label>
+                  Password:
+                  <Input type="password" name="password" onChange={this.handleChange}></Input>
+                </label>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12}>
+                <label>
+                  Confirm Password:
+                  <Input type="password" name="confirmPassword" onChange={this.handleChange}></Input>
+                </label>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12}>
+                <Button type="submit">Submit</Button>
+              </Col>
+            </Row>
+          </Container>
         </form>
-        <button onClick={this.handleClick}>Return to Login</button>
+        <Container>
+          <Row>
+            <Col>
+              <Button className={styles.backNav} onClick={this.handleClick}>Return to Login</Button>
+            </Col>
+          </Row>
+        </Container>
       </div>
     )
   }
