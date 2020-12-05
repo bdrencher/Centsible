@@ -5,7 +5,10 @@ import Chart from "react-google-charts";
 import { ApiCommunicator } from '../../services/apiCommunicator';
 
 export default class GoalProgress extends React.Component {
-  data = { name: "", Goal: 0, Assets: 0 };
+  name = "";
+  goal = 10;
+  assets = 5;
+
 
   constructor(props) {
     super(props);
@@ -13,9 +16,9 @@ export default class GoalProgress extends React.Component {
     const api = new ApiCommunicator();
     api.retrieveRetirementProfile(localStorage.getItem('user'), localStorage.getItem('access_token'), (result) => {
       if (result) {
-        this.data.name = "My Progress";
-        this.data.Goal = result.retirementGoal;
-        this.data.Assets = result.currentAssets;
+        this.name = "My Progress";
+        this.goal = result.retirementGoal;
+        this.assets = result.currentAssets;
       }
     });
   }
@@ -29,8 +32,8 @@ export default class GoalProgress extends React.Component {
         chartType="Bar"
         loader={<div>Loading Personal Progress Chart</div>}
         data={[
-          ['', 'Assets', 'Goal'],
-          [this.data.name, this.data.Assets, this.data.Goal]
+          [' ', 'Assets', 'Goal'],
+          [this.name, this.assets, this.goal]
         ]}
         options={{
           chart: {
