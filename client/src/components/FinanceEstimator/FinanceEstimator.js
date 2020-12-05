@@ -39,7 +39,7 @@ export class FinanceEstimator extends React.Component {
     return (
       <div>
         <div>
-          <h2>Estimate investment value</h2>
+          <h3>Estimate investment value</h3>
         </div>
         <div>
           <form onSubmit={this.handleSubmit}>
@@ -82,7 +82,7 @@ export class FinanceEstimator extends React.Component {
               </Row>
               <Row>
                 <Col>
-                  <Button type="submit" value="Submit"></Button>
+                  <Button type="submit" value="Submit">Calculate estimate</Button>
                 </Col>
               </Row>
             </Container>
