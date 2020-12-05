@@ -23,6 +23,7 @@
     "bcrypt": "^5.0.0",
     "express": "^4.17.1",
     "pg": "^8.3.3",
+    "react-google-charts": "^3.0.15",
     "react-router-dom": "^5.2.0",
     "workbox-cli": "^5.1.4"
   }

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './goalProgress.module.css';
-import { BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
-import { ApiCommunicator } from '../../services/apiCommunicator';
+import Chart from "react-google-charts";
+// import { ApiCommunicator } from '../../services/apiCommunicator';
 
 export default class GoalProgress extends React.Component {
-  data = [{ name: "", Goal: 0, Assets: 0 }]
+  data = { name: "", Goal: 0, Assets: 0 };
 
   constructor(props) {
     super(props);
@@ -16,7 +16,6 @@ export default class GoalProgress extends React.Component {
         this.data[0].name = "My Progress";
         this.data[0].Goal = result.retirementGoal;
         this.data[0].Assets = result.currentAssets;
-        this.forceUpdate();
       }
     });
   }
@@ -24,14 +23,21 @@ export default class GoalProgress extends React.Component {
   render() {
     return (
       <div className="goalProgressChart">
-        <BarChart width={250} height={250} data={this.data}>
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="Assets" fill="#FCA311" />
-          <Bar dataKey="Goal" fill="#14213D" />
-        </BarChart>
+        <Chart
+        width={'250px'}
+        height={'250px'}
+        chartType="Bar"
+        loader={<div>Loading Personal Progress Chart</div>}
+        data={[
+          ['', 'Assets', 'Goal'],
+          [this.data.name, this.data.Assets, this.data.Goal]
+        ]}
+        options={{
+          chart: {
+            title: "Progress Chart",
+          }
+        }}
+        />
       </div>
     )
   }
