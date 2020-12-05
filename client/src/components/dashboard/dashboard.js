@@ -31,24 +31,24 @@ export class Dashboard extends React.Component {
           <h3>Dashboard</h3>
         </div>
         <div>
-          <Container>
+          <Container fluid>
             <Row>
-              <Col xs={6}>
+              <Col xs={8}>
                 <Button onClick={this.goToFinanceEstimator}>Estimate an Investment</Button>
               </Col>
             </Row>
             <Row className={styles.secondaryButton}>
-              <Col xs={6}>
+              <Col xs={8}>
                <Button onClick={this.goToGoalSetter}>My Finances</Button>
               </Col>
             </Row>
             <Row className={styles.secondaryButton}>
-              <Col xs={6}>
+              <Col xs={8}>
                 <Button onClick={this.goToAccountSettings}>Settings</Button>
               </Col>
             </Row>
             <Row className={styles.secondaryButton}>
-              <Col xs={6}>
+              <Col xs={8}>
                 <Button onClick={this.handleLogout}>Logout</Button>
               </Col>
             </Row>
