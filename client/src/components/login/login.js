@@ -52,14 +52,14 @@ export class Login extends React.Component {
             <Row>
               <Col xs={12}>
                 <label>Username: 
-                  <Input type="text" name="username" onChange={this.handleChange}></Input>
+                  <Input type="text" name="username" onChange={this.handleChange}> </Input>
                 </label>
               </Col>
             </Row>
             <Row>
               <Col xs={12}>
                 <label>Password: 
-                  <Input type="password" name="password" onChange={this.handleChange}></Input>
+                  <Input type="password" name="password" onChange={this.handleChange}> </Input>
                 </label>
               </Col> 
             </Row>
