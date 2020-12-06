@@ -3,6 +3,7 @@ import styles from './goalSetter.module.css';
 import { Input } from '@material-ui/core';
 import { Container, Button, Row, Col } from 'react-bootstrap';
 import { ApiCommunicator } from '../../services/apiCommunicator';
+import * as calculator from '../../services/calculationHelper';
 import { RetirementProfile } from '../../models/profile';
 import GoalProgress from '../goalProgress/goalProgress';
 
@@ -14,7 +15,10 @@ export class GoalSetter extends React.Component {
       currentAge: 0,
       fundGoal: 0,
       retirementAge: 0,
-      currentAssets: 0
+      currentAssets: 0,
+      dailyInvestment: 0,
+      monthlyInvestment: 0,
+      yearlyInvestment: 0
     }
 
     const api = new ApiCommunicator();
@@ -24,7 +28,10 @@ export class GoalSetter extends React.Component {
           currentAge: result.currentAge,
           fundGoal: result.retirementGoal,
           retirementAge: result.retirementAge,
-          currentAssets: result.currentAssets
+          currentAssets: result.currentAssets,
+          dailyInvestment: calculator.calculateDailyInvestment(result.retirementGoal - result.currentAssets, 0.07, (result.retirementAge - result.currentAge)),
+          monthlyInvestment: calculator.calculateMonthlyInvestment(result.retirementGoal - result.currentAssets, 0.07, (result.retirementAge - result.currentAge)),
+          yearlyInvestment: calculator.calculateYearlyInvestment(result.retirementGoal - result.currentAssets, 0.07, (result.retirementAge - result.currentAge))
         });
       }
     });
@@ -36,6 +43,11 @@ export class GoalSetter extends React.Component {
     const name = target.name;
     this.setState({
       [name]: value,
+    });
+    this.setState({
+      dailyInvestment: calculator.calculateDailyInvestment(result.retirementGoal - result.currentAssets, 0.07, (result.retirementAge - result.currentAge)),
+      monthlyInvestment: calculator.calculateMonthlyInvestment(result.retirementGoal - result.currentAssets, 0.07, (result.retirementAge - result.currentAge)),
+      yearlyInvestment: calculator.calculateYearlyInvestment(result.retirementGoal - result.currentAssets, 0.07, (result.retirementAge - result.currentAge))
     });
   }
 
@@ -100,6 +112,31 @@ export class GoalSetter extends React.Component {
         <div className={styles.topSpace}>
           <h4>Tracking your progress</h4>
           <GoalProgress></GoalProgress>
+        </div>
+        <div>
+          <h4>Meeting your goal</h4>
+          <p>
+            In order to meet your retirement goal, you will need to consistently make contributions to your
+            retirement fund. Use the calculator below to see how much you need to invest daily, monthly, or
+            yearly to meet your goal. The following are calculated using a conservative 7% return on investment.
+          </p>
+          <Container>
+            <Row>
+              <Col>
+                Approximate daily investment: {this.state.dailyInvestment}
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                Approximate monthly investment: {this.state.monthlyInvestment}
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                Approximate yearly investment: {this.state.yearlyInvestment}
+              </Col>
+            </Row>
+          </Container>
         </div>
       </div>
     )
