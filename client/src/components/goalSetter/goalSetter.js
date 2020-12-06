@@ -117,23 +117,23 @@ export class GoalSetter extends React.Component {
           <h4>Meeting your goal</h4>
           <p>
             In order to meet your retirement goal, you will need to consistently make contributions to your
-            retirement fund. Use the calculator below to see how much you need to invest daily, monthly, or
+            retirement fund. Use the values below tell you how much you need to invest daily, monthly, or
             yearly to meet your goal. The following are calculated using a conservative 7% return on investment.
           </p>
           <Container>
             <Row>
               <Col>
-                Approximate daily investment: {Math.round(this.state.dailyInvestment)}
+                Approximate daily investment: <span className={styles.dollars}>${Math.round(this.state.dailyInvestment)}</span>
               </Col>
             </Row>
             <Row>
               <Col>
-                Approximate monthly investment: {Math.round(this.state.monthlyInvestment)}
+                Approximate monthly investment: <span className={styles.dollars}>${Math.round(this.state.monthlyInvestment)}</span>
               </Col>
             </Row>
             <Row>
               <Col>
-                Approximate yearly investment: {Math.round(this.state.yearlyInvestment)}
+                Approximate yearly investment: <span className={styles.dollars}>${Math.round(this.state.yearlyInvestment)}</span>
               </Col>
             </Row>
           </Container>
