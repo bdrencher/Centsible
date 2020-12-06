@@ -45,9 +45,9 @@ export class GoalSetter extends React.Component {
       [name]: value,
     });
     this.setState({
-      dailyInvestment: calculator.calculateDailyInvestment(this.state.retirementGoal - this.state.currentAssets, 0.07, (this.state.retirementAge - this.state.currentAge)),
-      monthlyInvestment: calculator.calculateMonthlyInvestment(this.state.retirementGoal - this.state.currentAssets, 0.07, (this.state.retirementAge - this.state.currentAge)),
-      yearlyInvestment: calculator.calculateYearlyInvestment(this.state.retirementGoal - this.state.currentAssets, 0.07, (this.state.retirementAge - this.state.currentAge))
+      dailyInvestment: calculator.calculateDailyInvestment(this.state.fundGoal - this.state.currentAssets, 0.07, (this.state.retirementAge - this.state.currentAge)),
+      monthlyInvestment: calculator.calculateMonthlyInvestment(this.state.fundGoal - this.state.currentAssets, 0.07, (this.state.retirementAge - this.state.currentAge)),
+      yearlyInvestment: calculator.calculateYearlyInvestment(this.state.fundGoal - this.state.currentAssets, 0.07, (this.state.retirementAge - this.state.currentAge))
     });
   }
 
