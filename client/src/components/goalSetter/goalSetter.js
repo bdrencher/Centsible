@@ -123,17 +123,17 @@ export class GoalSetter extends React.Component {
           <Container>
             <Row>
               <Col>
-                Approximate daily investment: {this.state.dailyInvestment}
+                Approximate daily investment: {Math.round(this.state.dailyInvestment)}
               </Col>
             </Row>
             <Row>
               <Col>
-                Approximate monthly investment: {this.state.monthlyInvestment}
+                Approximate monthly investment: {Math.round(this.state.monthlyInvestment)}
               </Col>
             </Row>
             <Row>
               <Col>
-                Approximate yearly investment: {this.state.yearlyInvestment}
+                Approximate yearly investment: {Math.round(this.state.yearlyInvestment)}
               </Col>
             </Row>
           </Container>
