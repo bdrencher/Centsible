@@ -145,6 +145,7 @@ export class ApiCommunicator {
             }
         })
         .catch((error) => {
+            callback(false);
             console.log(error);
         });
     }
