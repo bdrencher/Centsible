@@ -23,6 +23,9 @@
  *********************************************************/
 module.exports = {
    calculateInvestment: calculateInvestment, 
+   calculateDailyInvestment: calculateDailyInvestment,
+   calculateMonthlyInvestment: calculateMonthlyInvestment,
+   calculateYearlyInvestment: calculateYearlyInvestment
 }
 /****************************************
  * @desc calculates compound intrest based
@@ -55,6 +58,42 @@ function calculateInvestment(principle, fund, timeInYears, accountForInflation) 
     } else {
         return Math.round(principle * (1 + returnOnInvestment)**(timeInYears)); // compounded yearly, doesn't account for inflation
     }
+}
+
+/****************************************
+ * @desc calculate the value that should
+ * be invested yearly in order to meet
+ * the retirement goal
+ * @number goalValue
+ * @number interestRate as decimal
+ * @number years
+ ***************************************/
+function calculateYearlyInvestment(goalValue, rate, years) {
+    return (goalValue * (rate)) / (Math.pow(1 + rate, years) - 1);
+}
+
+/****************************************
+ * @desc calculate the value that should
+ * be invested monthly in order to meet
+ * the retirement goal
+ * @number goalValue
+ * @number interestRate as decimal
+ * @number years
+ ***************************************/
+function calculateMonthlyInvestment(goalValue, rate, years) {
+    return (goalValue * (rate / 12)) / (Math.pow(1 + rate / 12, 12*years) - 1);
+}
+
+ /****************************************
+ * @desc calculate the value that should
+ * be invested daily in order to meet
+ * the retirement goal
+ * @number goalValue
+ * @number interestRate as decimal
+ * @number years
+ ***************************************/
+function calculateDailyInvestment(goalValue, rate, years) {
+    return (goalValue * (rate / 365)) / (Math.pow(1 + rate / 365, 365*years) - 1);
 }
 
 /****************************************
